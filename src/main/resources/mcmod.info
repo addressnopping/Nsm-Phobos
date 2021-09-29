@@ -1,0 +1,18 @@
+[
+  {
+    "modid": "nsm",
+    "name": "Nsm Phobos",
+    "description": "Phobos is good.",
+    "version": "2.0.1",
+    "mcversion": "1.12.2",
+    "logoFile": "phobos.png",
+    "url": "",
+    "updateUrl": "",
+    "authorList": [
+      "PeterDev",
+      "Nsm"
+    ],
+    "screenshots": [],
+    "dependencies": []
+  }
+]
