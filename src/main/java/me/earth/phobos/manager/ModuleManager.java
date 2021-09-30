@@ -35,6 +35,7 @@ public class ModuleManager
         this.modules.add(new AutoTrap());
         this.modules.add(new AutoCrystal());
         this.modules.add(new NsmCA());
+        this.modules.add(new Animations());
         this.modules.add(new Criticals());
         this.modules.add(new BowSpam());
         this.modules.add(new Killaura());
@@ -215,6 +216,7 @@ public class ModuleManager
         this.moduleColorMap.put(this.getModuleByClass(Tracker.class), new Color(0, 255, 225));
         this.moduleColorMap.put(this.getModuleByClass(GhastNotifier.class), new Color(200, 200, 220));
         this.moduleColorMap.put(this.getModuleByClass(OffscreenESP.class), new Color(193, 219, 20));
+        this.moduleColorMap.put(this.getModuleByClass(Animations.class), new Color(103, 182, 224));
         this.moduleColorMap.put(this.getModuleByClass(BlockHighlight.class), new Color(103, 182, 224));
         this.moduleColorMap.put(this.getModuleByClass(CameraClip.class), new Color(247, 169, 107));
         this.moduleColorMap.put(this.getModuleByClass(Chams.class), new Color(34, 152, 34));
