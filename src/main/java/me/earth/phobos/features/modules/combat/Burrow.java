@@ -21,7 +21,7 @@ public class Burrow extends Module
     private final Setting<Boolean> rotate = register(new Setting("Rotate", false));
     private final Setting<Boolean> echest = register(new Setting("Use echest", false));
 
-    public Burrow() { super("Burrow", "TPs you into a block", Category.PLAYER, true, false, false); }
+    public Burrow() { super("Burrow", "TPs you into a block", Category.COMBAT, true, false, false); }
 
     private BlockPos originalPos;
     private int oldSlot = -1;
