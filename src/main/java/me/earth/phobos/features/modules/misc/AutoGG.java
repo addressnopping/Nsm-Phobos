@@ -132,7 +132,7 @@ public class AutoGG
         this.loadMessages();
         Random rand = new Random();
         if (this.messages.size() == 0) {
-            return "<player>, Nsm Phobos 2.0.1 is just so strong >:)";
+            return "<player>, Nsm Phobos " + Phobos.MODVER + " is just so strong >:)";
         }
         if (this.messages.size() == 1) {
             return this.messages.get(0);
