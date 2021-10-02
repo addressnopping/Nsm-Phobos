@@ -27,7 +27,7 @@ public class PopESP
         extends Module {
 
     public PopESP() {
-        super("PopESP", "Renders pops", Module.Category.RENDER, true, false, false);
+        super("PopESP", "Renders pops", Module.Category.RENDER, true, true, false);
     }
 
     private final Setting<Integer> fadeTime = this.register(new Setting<Integer>("FadeTime", 3000, 1, 5000));

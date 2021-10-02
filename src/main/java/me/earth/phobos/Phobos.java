@@ -148,7 +148,7 @@ public class Phobos {
             }
             eventManager.onUnload();
             moduleManager.onUnload();
-            configManager.saveConfig(Phobos.configManager.config.replaceFirst("nsmphobos/", ""));
+            configManager.saveConfig(Phobos.configManager.config.replaceFirst("phobos/", ""));
             moduleManager.onUnloadPost();
             timerManager.unload();
             unloaded = true;
