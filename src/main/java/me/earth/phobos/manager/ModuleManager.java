@@ -11,7 +11,7 @@ import me.earth.phobos.features.modules.combat.*;
 import me.earth.phobos.features.modules.misc.*;
 import me.earth.phobos.features.modules.movement.*;
 import me.earth.phobos.features.modules.player.*;
-import me.earth.phobos.features.modules.player.Burrow;
+import me.earth.phobos.features.modules.combat.Burrow;
 import me.earth.phobos.features.modules.render.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.EventBus;
@@ -130,6 +130,7 @@ public class ModuleManager
         this.modules.add(new TrueDurability());
         this.modules.add(new Yaw());
         this.modules.add(new NoDDoS());
+        this.modules.add(new PopESP());
         this.modules.add(new StorageESP());
         this.modules.add(new NoRender());
         this.modules.add(new SmallShield());
@@ -216,6 +217,7 @@ public class ModuleManager
         this.moduleColorMap.put(this.getModuleByClass(Tracker.class), new Color(0, 255, 225));
         this.moduleColorMap.put(this.getModuleByClass(GhastNotifier.class), new Color(200, 200, 220));
         this.moduleColorMap.put(this.getModuleByClass(OffscreenESP.class), new Color(193, 219, 20));
+        this.moduleColorMap.put(this.getModuleByClass(PopESP.class), new Color(193, 219, 20));
         this.moduleColorMap.put(this.getModuleByClass(Animations.class), new Color(103, 182, 224));
         this.moduleColorMap.put(this.getModuleByClass(BlockHighlight.class), new Color(103, 182, 224));
         this.moduleColorMap.put(this.getModuleByClass(CameraClip.class), new Color(247, 169, 107));

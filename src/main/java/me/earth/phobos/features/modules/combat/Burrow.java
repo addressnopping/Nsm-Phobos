@@ -1,4 +1,4 @@
-package me.earth.phobos.features.modules.player;
+package me.earth.phobos.features.modules.combat;
 
 import me.earth.phobos.features.command.Command;
 import me.earth.phobos.features.modules.Module;
@@ -21,7 +21,7 @@ public class Burrow extends Module
     private final Setting<Boolean> rotate = register(new Setting("Rotate", false));
     private final Setting<Boolean> echest = register(new Setting("Use echest", false));
 
-    public Burrow() { super("Burrow", "TPs you into a block", Category.PLAYER, true, false, false); }
+    public Burrow() { super("Burrow", "TPs you into a block", Category.COMBAT, true, false, false); }
 
     private BlockPos originalPos;
     private int oldSlot = -1;
