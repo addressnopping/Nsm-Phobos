@@ -34,6 +34,7 @@ public class ModuleManager
         this.modules.add(new Surround());
         this.modules.add(new AutoTrap());
         this.modules.add(new AutoCrystal());
+        this.modules.add(new OyVeyOffhand());
         this.modules.add(new NsmCA());
         this.modules.add(new Animations());
         this.modules.add(new Criticals());
@@ -183,6 +184,7 @@ public class ModuleManager
         this.moduleColorMap.put(this.getModuleByClass(Killaura.class), new Color(255, 37, 0));
         this.moduleColorMap.put(this.getModuleByClass(NsmCA.class), new Color(255, 37, 0));
         this.moduleColorMap.put(this.getModuleByClass(Offhand.class), new Color(185, 212, 144));
+        this.moduleColorMap.put(this.getModuleByClass(OyVeyOffhand.class), new Color(185, 212, 144));
         this.moduleColorMap.put(this.getModuleByClass(Selftrap.class), new Color(22, 127, 145));
         this.moduleColorMap.put(this.getModuleByClass(Surround.class), new Color(100, 0, 150));
         this.moduleColorMap.put(this.getModuleByClass(Webaura.class), new Color(11, 161, 121));
