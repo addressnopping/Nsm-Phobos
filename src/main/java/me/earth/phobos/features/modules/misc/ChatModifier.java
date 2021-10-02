@@ -1,5 +1,6 @@
 package me.earth.phobos.features.modules.misc;
 
+import me.earth.phobos.Phobos;
 import me.earth.phobos.event.events.PacketEvent;
 import me.earth.phobos.features.command.Command;
 import me.earth.phobos.features.modules.Module;
@@ -83,7 +84,7 @@ public class ChatModifier
                     break;
                 }
                 case NSMPHOBOS: {
-                    s = s + " \u23d0 \u2115\ud835\udd64\ud835\udd5e \u2119\ud835\udd59\ud835\udd60\ud835\udd53\ud835\udd60\ud835\udd64";
+                    s = s + " \u23d0 Nsm Phobos - v" + Phobos.MODVER;
                     break;
                 }
             }
