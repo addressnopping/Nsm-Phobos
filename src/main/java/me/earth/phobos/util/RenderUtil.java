@@ -1085,6 +1085,18 @@ public class RenderUtil
         }
     }
 
+    public static void drawText2(AxisAlignedBB pos, String text) {
+        if ( pos == null || text == null ) {
+            return;
+        }
+        GlStateManager.pushMatrix ( );
+        RenderUtil.glBillboardDistanceScaled ( (float) pos.minX  + 0.5f , (float) pos.minY + 0.5f , (float) pos.minZ + 0.5f , RenderUtil.mc.player , 1.0f );
+        GlStateManager.disableDepth ( );
+        GlStateManager.translate ( - ( (double) Phobos.textManager.getStringWidth ( text ) / 2.0 ) , 0.0 , 0.0 );
+        Phobos.textManager.drawStringWithShadow ( text , 0.0f , 0.0f , - 5592406 );
+        GlStateManager.popMatrix ( );
+    }
+
     public static void drawText(BlockPos pos, String text) {
         if (pos == null || text == null) {
             return;
