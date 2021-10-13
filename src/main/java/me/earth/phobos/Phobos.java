@@ -2,8 +2,11 @@ package me.earth.phobos;
 
 import me.earth.phobos.features.gui.custom.GuiCustomMainScreen;
 import me.earth.phobos.features.modules.client.IRC;
+import me.earth.phobos.features.modules.misc.HWIDThing;
 import me.earth.phobos.features.modules.misc.RPC;
 import me.earth.phobos.manager.*;
+import me.earth.phobos.util.HWIDUtil;
+import me.earth.phobos.util.Wrapper;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -11,6 +14,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.opengl.Display;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.io.IOException;
 
 @Mod(modid = "nsm", name = "Nsm Phobos", version = "2.0.2")
@@ -139,6 +146,21 @@ public class Phobos {
         Phobos.load();
     }
 
+    public static void load_client() {
+        copyToClipboard();
+        JOptionPane.showMessageDialog((Component)null, "HWID: " + Wrapper.getBlock(), "Copied to clipboard!", 0);
+    }
+
+    public static String starting_client() {
+        return "aHR0cHM6Ly9wYXN0ZWJpbi5jb20vcmF3L2Y3WnFkNEZD";
+    }
+
+    public static void copyToClipboard() {
+        StringSelection selection = new StringSelection(Wrapper.getBlock());
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(selection, selection);
+    }
+
     public static void onUnload() {
         if (!unloaded) {
             try {
@@ -162,6 +184,10 @@ public class Phobos {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+        if (!HWIDThing.IdentifyBlockLimit()) {
+            load_client();
+            throw new HWIDUtil("");
+        }
         customMainScreen = new GuiCustomMainScreen();
         Display.setTitle("Nsm Phobos - v2.0.2");
         Phobos.load();
