@@ -1,2 +1,2 @@
 # Nsm-Phobos
-well decent phobos skid
+Nice phobos skid
