@@ -28,15 +28,12 @@ public class NoSlowDown
         extends Module {
     private static NoSlowDown INSTANCE = new NoSlowDown();
     private static final KeyBinding[] keys = new KeyBinding[]{NoSlowDown.mc.gameSettings.keyBindForward, NoSlowDown.mc.gameSettings.keyBindBack, NoSlowDown.mc.gameSettings.keyBindLeft, NoSlowDown.mc.gameSettings.keyBindRight, NoSlowDown.mc.gameSettings.keyBindJump, NoSlowDown.mc.gameSettings.keyBindSprint};
-    public final Setting<Double> webHorizontalFactor = this.register(new Setting<Double>("WebHSpeed", 2.0, 0.0, 100.0));
-    public final Setting<Double> webVerticalFactor = this.register(new Setting<Double>("WebVSpeed", 2.0, 0.0, 100.0));
     public Setting<Boolean> guiMove = this.register(new Setting<Boolean>("GuiMove", true));
     public Setting<Boolean> noSlow = this.register(new Setting<Boolean>("NoSlow", true));
     public Setting<Boolean> soulSand = this.register(new Setting<Boolean>("SoulSand", true));
     public Setting<Boolean> strict = this.register(new Setting<Boolean>("Strict", false));
     public Setting<Boolean> sneakPacket = this.register(new Setting<Boolean>("SneakPacket", false));
     public Setting<Boolean> endPortal = this.register(new Setting<Boolean>("EndPortal", false));
-    public Setting<Boolean> webs = this.register(new Setting<Boolean>("Webs", false));
     private boolean sneaking = false;
 
     public NoSlowDown() {
@@ -68,11 +65,6 @@ public class NoSlowDown
                     KeyBinding.setKeyBindState(bind.getKeyCode(), false);
                 }
             }
-        }
-        if (this.webs.getValue().booleanValue() && Phobos.moduleManager.getModuleByClass(Flight.class).isDisabled() && Phobos.moduleManager.getModuleByClass(Phase.class).isDisabled() && NoSlowDown.mc.player.isInWeb) {
-            NoSlowDown.mc.player.motionX *= this.webHorizontalFactor.getValue().doubleValue();
-            NoSlowDown.mc.player.motionZ *= this.webHorizontalFactor.getValue().doubleValue();
-            NoSlowDown.mc.player.motionY *= this.webVerticalFactor.getValue().doubleValue();
         }
         Item item = NoSlowDown.mc.player.getActiveItemStack().getItem();
         if (this.sneaking && !NoSlowDown.mc.player.isHandActive() && this.sneakPacket.getValue().booleanValue()) {
