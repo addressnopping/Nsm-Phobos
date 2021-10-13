@@ -41,7 +41,7 @@ public class HUD
     private final Setting<String> customWatermark = this.register(new Setting<String>("WatermarkName", "Nsm On Top!"));
     private final Setting<Boolean> modeVer = this.register(new Setting<Object>("Version", Boolean.valueOf(false), v -> this.watermark.getValue() != WaterMark.NONE));
     private final Setting<Boolean> arrayList = this.register(new Setting<Boolean>("ActiveModules", Boolean.valueOf(false), "Lists the active modules."));
-    private final Setting<Boolean> moduleColors = this.register(new Setting<Object>("ModuleColors", Boolean.valueOf(false), v -> this.arrayList.getValue()));
+    //private final Setting<Boolean> moduleColors = this.register(new Setting<Object>("ModuleColors", Boolean.valueOf(false), v -> this.arrayList.getValue()));
     private final Setting<Boolean> alphabeticalSorting = this.register(new Setting<Object>("AlphabeticalSorting", Boolean.valueOf(false), v -> this.arrayList.getValue()));
     private final Setting<Boolean> serverBrand = this.register(new Setting<Boolean>("ServerBrand", Boolean.valueOf(false), "Brand of the server you are on."));
     private final Setting<Boolean> ping = this.register(new Setting<Boolean>("Ping", Boolean.valueOf(false), "Your response time to the server."));
@@ -226,7 +226,7 @@ public class HUD
                     final Module module = this.alphabeticalSorting.getValue() ? Phobos.moduleManager.alphabeticallySortedModules.get(k) : Phobos.moduleManager.sortedModules.get(k);
                     final String text = module.getDisplayName() + ((module.getDisplayInfo() != null) ? (" [" + module.getDisplayInfo() + "]") : "");
                     final Color moduleColor = Phobos.moduleManager.moduleColorMap.get(module);
-                    this.renderer.drawString(text, width - 2 - this.renderer.getStringWidth(text) + ((this.animationHorizontalTime.getValue() == 1) ? 0.0f : module.arrayListOffset), (float) (2 + j * 10), (this.rolling.getValue() && this.rainbow.getValue()) ? this.colorMap.get(MathUtil.clamp(2 + j * 10, 0, height)) : ((this.moduleColors.getValue() && moduleColor != null) ? moduleColor.getRGB() : this.color), true);
+                    this.renderer.drawString(text, width - 2 - this.renderer.getStringWidth(text) + ((this.animationHorizontalTime.getValue() == 1) ? 0.0f : module.arrayListOffset), (float) (2 + j * 10), (this.rolling.getValue() && this.rainbow.getValue()) ? this.colorMap.get(MathUtil.clamp(2 + j * 10, 0, height)) : ((moduleColor != null) ? moduleColor.getRGB() : this.color), true);
                     ++j;
                 }
             } else {
@@ -239,7 +239,7 @@ public class HUD
                     final float x = width - 2 - this.renderer.getStringWidth(text) + ((this.animationHorizontalTime.getValue() == 1) ? 0.0f : module.arrayListOffset);
                     final int n = height;
                     j += 10;
-                    renderer.drawString(text5, x, (float) (n - j), (this.rolling.getValue() && this.rainbow.getValue()) ? this.colorMap.get(MathUtil.clamp(height - j, 0, height)) : ((this.moduleColors.getValue() && moduleColor != null) ? moduleColor.getRGB() : this.color), true);
+                    renderer.drawString(text5, x, (float) (n - j), (this.rolling.getValue() && this.rainbow.getValue()) ? this.colorMap.get(MathUtil.clamp(height - j, 0, height)) : ((moduleColor != null) ? moduleColor.getRGB() : this.color), true);
                 }
             }
         }
