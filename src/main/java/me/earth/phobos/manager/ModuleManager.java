@@ -137,6 +137,7 @@ public class ModuleManager
         this.modules.add(new SmallShield());
         this.modules.add(new Fullbright());
         this.modules.add(new BurrowESP());
+        this.modules.add(new BowBomb());
         this.modules.add(new CameraClip());
         this.modules.add(new Chams());
         this.modules.add(new Skeleton());
