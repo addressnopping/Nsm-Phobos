@@ -130,6 +130,7 @@ public class ModuleManager
         this.modules.add(new WebSolid());
         this.modules.add(new Scaffold());
         this.modules.add(new EchestBP());
+        this.modules.add(new PenisESP());
         this.modules.add(new TpsSync());
         this.modules.add(new MCP());
         this.modules.add(new TrueDurability());
