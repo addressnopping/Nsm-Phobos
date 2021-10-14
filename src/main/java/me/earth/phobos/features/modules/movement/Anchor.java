@@ -8,10 +8,6 @@ import net.minecraft.util.math.BlockPos;
 
 import java.util.HashMap;
 
-/**
- * @author Peterrr__ and gamesense devs
- * Skidded by Peterrr__
- */
 public class Anchor
         extends Module {
     private final Setting<Boolean> guarantee = this.register(new Setting<Boolean>("Guarantee Hole", true));
