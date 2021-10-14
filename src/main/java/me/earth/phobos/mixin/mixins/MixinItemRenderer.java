@@ -1,7 +1,9 @@
 package me.earth.phobos.mixin.mixins;
 
+import me.earth.phobos.features.Feature;
 import me.earth.phobos.features.modules.render.NoRender;
 import me.earth.phobos.features.modules.render.SmallShield;
+import me.earth.phobos.features.modules.render.ViewModel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -41,6 +43,13 @@ public abstract class MixinItemRenderer {
             }
             this.renderItemInFirstPerson(player, p_187457_2_, p_187457_3_, hand, p_187457_5_ + xOffset, stack, p_187457_7_ + yOffset);
             this.injection = true;
+        }
+        if (ViewModel.getINSTANCE().enabled.getValue() && Minecraft.getMinecraft().gameSettings.thirdPersonView == 0 && !Feature.fullNullCheck()) {
+            GlStateManager.scale((float)ViewModel.getINSTANCE().sizeX.getValue(), (float)ViewModel.getINSTANCE().sizeY.getValue(), (float)ViewModel.getINSTANCE().sizeZ.getValue());
+            GlStateManager.rotate(ViewModel.getINSTANCE().rotationX.getValue() * 360.0f, 1.0f, 0.0f, 0.0f);
+            GlStateManager.rotate(ViewModel.getINSTANCE().rotationY.getValue() * 360.0f, 0.0f, 1.0f, 0.0f);
+            GlStateManager.rotate(ViewModel.getINSTANCE().rotationZ.getValue() * 360.0f, 0.0f, 0.0f, 1.0f);
+            GlStateManager.translate((float)ViewModel.getINSTANCE().positionX.getValue(), (float)ViewModel.getINSTANCE().positionY.getValue(), (float)ViewModel.getINSTANCE().positionZ.getValue());
         }
     }
 
