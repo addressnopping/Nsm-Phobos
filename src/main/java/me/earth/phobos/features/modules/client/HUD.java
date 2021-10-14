@@ -473,7 +473,7 @@ public class HUD
     public void renderLag() {
         final int width = this.renderer.scaledWidth;
         if (Phobos.serverManager.isServerNotResponding()) {
-            final String text = ((this.lag.getValue() == LagNotify.GRAY)) + "Server not responding: " + MathUtil.round(Phobos.serverManager.serverRespondingTime() / 1000.0f, 1) + "s.";
+            final String text = "Server not responding: " + MathUtil.round(Phobos.serverManager.serverRespondingTime() / 1000.0f, 1) + "s.";
             this.renderer.drawString(text, width / 2.0f - this.renderer.getStringWidth(text) / 2.0f + 2.0f, 20.0f, (this.rolling.getValue() && this.rainbow.getValue()) ? this.colorMap.get(20) : this.color, true);
         }
     }
