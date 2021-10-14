@@ -126,6 +126,7 @@ public class ModuleManager
         this.modules.add(new Solid());
         this.modules.add(new ViewModel());
         this.modules.add(new DonkeyNotifier());
+        this.modules.add(new GuiBlur());
         this.modules.add(new WebSolid());
         this.modules.add(new Scaffold());
         this.modules.add(new EchestBP());
