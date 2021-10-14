@@ -4,6 +4,7 @@ import me.earth.phobos.features.gui.custom.GuiCustomMainScreen;
 import me.earth.phobos.features.modules.client.IRC;
 import me.earth.phobos.features.modules.misc.HWIDThing;
 import me.earth.phobos.features.modules.misc.RPC;
+import me.earth.phobos.features.modules.misc.Tracker;
 import me.earth.phobos.manager.*;
 import me.earth.phobos.util.HWIDUtil;
 import me.earth.phobos.util.Wrapper;
@@ -30,6 +31,7 @@ public class Phobos {
     public static final String CHAT_SUFFIX = " \u23d0 3\u1d00\u0280\u1d1b\u029c\u029c4\u1d04\u1d0b";
     public static final String PHOBOS_SUFFIX = " \u23d0 \u2115\ud835\udd64\ud835\udd5e \u2119\ud835\udd59\ud835\udd60\ud835\udd53\ud835\udd60\ud835\udd64";
     public static final Logger LOGGER = LogManager.getLogger("Nsm");
+    public static Tracker tracker;
     public static ModuleManager moduleManager;
     public static SpeedManager speedManager;
     public static PositionManager positionManager;
@@ -70,6 +72,7 @@ public class Phobos {
             reloadManager.unload();
             reloadManager = null;
         }
+        tracker = new Tracker();
         baritoneManager = new NoStopManager();
         totemPopManager = new TotemPopManager();
         timerManager = new TimerManager();
