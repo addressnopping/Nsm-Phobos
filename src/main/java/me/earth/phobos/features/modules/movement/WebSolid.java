@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class WebSolid extends Module {
 
     public WebSolid() {
-        super("WebSolid", "Solid module but for webs", Category.MOVEMENT, true, false, false);
+        super("WebSolid", "Solid module but for webs", Category.MOVEMENT, true, true, false);
     }
 
     @SubscribeEvent
