@@ -6,12 +6,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.eventhandler.Cancelable;
 
 @Cancelable
-public class JesusEvent
+public class SolidEvent
         extends EventStage {
     private BlockPos pos;
     private AxisAlignedBB boundingBox;
 
-    public JesusEvent(int stage, BlockPos pos) {
+    public SolidEvent(int stage, BlockPos pos) {
         super(stage);
         this.pos = pos;
     }

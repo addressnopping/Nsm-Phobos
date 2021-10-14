@@ -123,7 +123,7 @@ public class ModuleManager
         this.modules.add(new Burrow());
         this.modules.add(new Replenish());
         this.modules.add(new NoHunger());
-        this.modules.add(new Jesus());
+        this.modules.add(new Solid());
         this.modules.add(new Scaffold());
         this.modules.add(new EchestBP());
         this.modules.add(new TpsSync());
@@ -272,7 +272,7 @@ public class ModuleManager
         this.moduleColorMap.put(this.getModuleByClass(FakePlayer.class), new Color(37, 192, 170));
         this.moduleColorMap.put(this.getModuleByClass(FastPlace.class), new Color(217, 118, 37));
         this.moduleColorMap.put(this.getModuleByClass(Freecam.class), new Color(206, 232, 128));
-        this.moduleColorMap.put(this.getModuleByClass(Jesus.class), new Color(136, 221, 235));
+        this.moduleColorMap.put(this.getModuleByClass(Solid.class), new Color(136, 221, 235));
         this.moduleColorMap.put(this.getModuleByClass(LiquidInteract.class), new Color(85, 223, 235));
         this.moduleColorMap.put(this.getModuleByClass(MCP.class), new Color(153, 68, 170));
         this.moduleColorMap.put(this.getModuleByClass(MultiTask.class), new Color(17, 223, 235));
