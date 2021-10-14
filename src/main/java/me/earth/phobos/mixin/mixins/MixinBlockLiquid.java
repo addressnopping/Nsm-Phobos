@@ -1,6 +1,6 @@
 package me.earth.phobos.mixin.mixins;
 
-import me.earth.phobos.event.events.JesusEvent;
+import me.earth.phobos.event.events.SolidEvent;
 import me.earth.phobos.features.modules.player.LiquidInteract;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
@@ -26,7 +26,7 @@ extends Block {
 
     @Inject(method={"getCollisionBoundingBox"}, at={@At(value="HEAD")}, cancellable=true)
     public void getCollisionBoundingBoxHook(IBlockState blockState, IBlockAccess worldIn, BlockPos pos, CallbackInfoReturnable<AxisAlignedBB> info) {
-        JesusEvent event = new JesusEvent(0, pos);
+        SolidEvent event = new SolidEvent(0, pos);
         MinecraftForge.EVENT_BUS.post((Event)event);
         if (event.isCanceled()) {
             info.setReturnValue(event.getBoundingBox());
