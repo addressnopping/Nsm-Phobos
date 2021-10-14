@@ -5,7 +5,7 @@ import javax.annotation.Nullable;
 import me.earth.phobos.features.modules.movement.Flight;
 import me.earth.phobos.features.modules.movement.Phase;
 import me.earth.phobos.features.modules.player.Freecam;
-import me.earth.phobos.features.modules.player.Jesus;
+import me.earth.phobos.features.modules.movement.Solid;
 import me.earth.phobos.features.modules.render.XRay;
 import me.earth.phobos.util.EntityUtil;
 import me.earth.phobos.util.Util;
@@ -36,8 +36,8 @@ public abstract class MixinBlock {
             info.cancel();
         }
         try {
-            if (Freecam.getInstance().isOff() && Jesus.getInstance().isOn() && Jesus.getInstance().mode.getValue() == Jesus.Mode.TRAMPOLINE && Util.mc.player != null && state != null && state.getBlock() instanceof BlockLiquid && !(entityIn instanceof EntityBoat) && !Util.mc.player.isSneaking() && Util.mc.player.fallDistance < 3.0f && !EntityUtil.isAboveLiquid((Entity)Util.mc.player) && EntityUtil.checkForLiquid((Entity)Util.mc.player, false) || EntityUtil.checkForLiquid((Entity)Util.mc.player, false) && Util.mc.player.getRidingEntity() != null && Util.mc.player.getRidingEntity().fallDistance < 3.0f && EntityUtil.isAboveBlock((Entity)Util.mc.player, pos)) {
-                AxisAlignedBB offset = Jesus.offset.offset(pos);
+            if (Freecam.getInstance().isOff() && Solid.getInstance().isOn() && Solid.getInstance().mode.getValue() == Solid.Mode.TRAMPOLINE && Util.mc.player != null && state != null && state.getBlock() instanceof BlockLiquid && !(entityIn instanceof EntityBoat) && !Util.mc.player.isSneaking() && Util.mc.player.fallDistance < 3.0f && !EntityUtil.isAboveLiquid((Entity)Util.mc.player) && EntityUtil.checkForLiquid((Entity)Util.mc.player, false) || EntityUtil.checkForLiquid((Entity)Util.mc.player, false) && Util.mc.player.getRidingEntity() != null && Util.mc.player.getRidingEntity().fallDistance < 3.0f && EntityUtil.isAboveBlock((Entity)Util.mc.player, pos)) {
+                AxisAlignedBB offset = Solid.offset.offset(pos);
                 if (entityBox.intersects(offset)) {
                     collidingBoxes.add(offset);
                 }

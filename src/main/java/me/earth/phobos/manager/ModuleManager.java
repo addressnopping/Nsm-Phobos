@@ -124,6 +124,7 @@ public class ModuleManager
         this.modules.add(new Replenish());
         this.modules.add(new NoHunger());
         this.modules.add(new Solid());
+        this.modules.add(new WebSolid());
         this.modules.add(new Scaffold());
         this.modules.add(new EchestBP());
         this.modules.add(new TpsSync());

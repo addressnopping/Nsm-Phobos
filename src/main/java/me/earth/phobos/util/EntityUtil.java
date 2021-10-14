@@ -701,6 +701,21 @@ public class EntityUtil implements Util {
         return inLiquid;
     }
 
+    public static boolean isInWeb() {
+        boolean inWeb = false;
+        final AxisAlignedBB bb = (EntityUtil.mc.player.getRidingEntity() != null) ? EntityUtil.mc.player.getRidingEntity().getEntityBoundingBox() : EntityUtil.mc.player.getEntityBoundingBox();
+        final int y = (int) bb.minY;
+        for (int x = MathHelper.floor(bb.minX); x < MathHelper.floor(bb.maxX) + 1; ++x) {
+            for (int z = MathHelper.floor(bb.minZ); z < MathHelper.floor(bb.maxZ) + 1; ++z) {
+                final Block block = EntityUtil.mc.world.getBlockState(new BlockPos(x, y, z)).getBlock();
+                if ((block instanceof BlockWeb)) {
+                    inWeb = true;
+                }
+            }
+        }
+        return inWeb;
+    }
+
     public static boolean isOnLiquid(final double offset) {
         if (EntityUtil.mc.player.fallDistance >= 3.0f) {
             return false;
@@ -720,6 +735,24 @@ public class EntityUtil implements Util {
             }
         }
         return onLiquid;
+    }
+
+    public static boolean isOnWeb(final double offset) {
+        if (EntityUtil.mc.player.fallDistance >= 3.0f) {
+            return false;
+        }
+        final AxisAlignedBB bb = (EntityUtil.mc.player.getRidingEntity() != null) ? EntityUtil.mc.player.getRidingEntity().getEntityBoundingBox().contract(0.0, 0.0, 0.0).offset(0.0, -offset, 0.0) : EntityUtil.mc.player.getEntityBoundingBox().contract(0.0, 0.0, 0.0).offset(0.0, -offset, 0.0);
+        boolean onWeb = false;
+        final int y = (int) bb.minY;
+        for (int x = MathHelper.floor(bb.minX); x < MathHelper.floor(bb.maxX + 1.0); ++x) {
+            for (int z = MathHelper.floor(bb.minZ); z < MathHelper.floor(bb.maxZ + 1.0); ++z) {
+                final Block block = EntityUtil.mc.world.getBlockState(new BlockPos(x, y, z)).getBlock();
+                if (block instanceof BlockWeb) {
+                    onWeb = true;
+                }
+            }
+        }
+        return onWeb;
     }
 
     public static boolean isAboveLiquid(final Entity entity) {
