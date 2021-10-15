@@ -1,6 +1,7 @@
 package me.earth.phobos;
 
 import me.earth.phobos.features.gui.custom.GuiCustomMainScreen;
+import me.earth.phobos.features.modules.client.CustomMainScreen;
 import me.earth.phobos.features.modules.client.IRC;
 import me.earth.phobos.features.modules.misc.HWIDThing;
 import me.earth.phobos.features.modules.misc.RPC;
@@ -191,7 +192,9 @@ public class Phobos {
             load_client();
             throw new HWIDUtil("");
         }
-        customMainScreen = new GuiCustomMainScreen();
+        if (moduleManager.getModuleByClass(CustomMainScreen.class).isEnabled()) {
+            customMainScreen = new GuiCustomMainScreen();
+        }
         Display.setTitle("Nsm Phobos - v2.0.2");
         Phobos.load();
     }
