@@ -33,7 +33,7 @@ public class DiscordPresence {
                 rpc.Discord_RunCallbacks();
                 DiscordPresence.presence.details = Minecraft.getMinecraft().currentScreen instanceof GuiMainMenu ? "In the main menu." : "Playing " + (Minecraft.getMinecraft().currentServerData != null ? (RPC.INSTANCE.showIP.getValue().booleanValue() ? "on " + Minecraft.getMinecraft().currentServerData.serverIP + "." : " multiplayer.") : " singleplayer.");
                 DiscordPresence.presence.state = RPC.INSTANCE.state.getValue();
-               /*if (RPC.INSTANCE.catMode.getValue().booleanValue()) {
+                /*if (RPC.INSTANCE.catMode.getValue().booleanValue()) {
                     if (index == 16) {
                         index = 1;
                     }
