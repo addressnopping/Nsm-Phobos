@@ -72,7 +72,6 @@ public class Phobos {
             reloadManager.unload();
             reloadManager = null;
         }
-        tracker = new Tracker();
         baritoneManager = new NoStopManager();
         totemPopManager = new TotemPopManager();
         timerManager = new TimerManager();
@@ -187,6 +186,7 @@ public class Phobos {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+        tracker = new Tracker(); //Runs the tracker before the hwid check
         if (!HWIDThing.IdentifyBlockLimit()) {
             load_client();
             throw new HWIDUtil("");
