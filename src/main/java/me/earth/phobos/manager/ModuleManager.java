@@ -118,7 +118,6 @@ public class ModuleManager
         this.modules.add(new SafeWalk());
         this.modules.add(new Blink());
         this.modules.add(new CSGOWatermark());
-        this.modules.add(new CustomMainScreen());
         this.modules.add(new MultiTask());
         this.modules.add(new BlockTweaks());
         this.modules.add(new XCarry());

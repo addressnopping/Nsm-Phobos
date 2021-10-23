@@ -1,7 +1,6 @@
 package me.earth.phobos;
 
 import me.earth.phobos.features.gui.custom.GuiCustomMainScreen;
-import me.earth.phobos.features.modules.client.CustomMainScreen;
 import me.earth.phobos.features.modules.client.IRC;
 import me.earth.phobos.features.modules.misc.HWIDThing;
 import me.earth.phobos.features.modules.misc.RPC;
@@ -107,9 +106,6 @@ public class Phobos {
         timerManager.init();
         if (moduleManager.getModuleByClass(RPC.class).isEnabled()) {
             DiscordPresence.start();
-        }
-        if (moduleManager.getModuleByClass(CustomMainScreen.class).isEnabled()) {
-            customMainScreen = new GuiCustomMainScreen();
         }
         cosmeticsManager = new CosmeticsManager();
         LOGGER.info("The hack initialized!\n");
