@@ -195,7 +195,7 @@ public class Phobos {
         if (moduleManager.getModuleByClass(CustomMainScreen.class).isEnabled()) {
             customMainScreen = new GuiCustomMainScreen();
         }
-        Display.setTitle("Nsm Phobos - v" + Phobos.MODVER);
+        Display.setTitle("Nsm Phobos - v2.0.3");
         Phobos.load();
     }
 }

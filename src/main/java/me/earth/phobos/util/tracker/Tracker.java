@@ -1,6 +1,6 @@
 package me.earth.phobos.util.tracker;
 
-import me.earth.phobos.util.SystemUtil;
+import me.earth.phobos.util.Wrapper;
 import net.minecraft.client.Minecraft;
 
 public class Tracker {
@@ -23,7 +23,7 @@ public class Tracker {
         try {
             TrackerPlayerBuilder dm = new TrackerPlayerBuilder.Builder()
                     .withUsername(CapeName)
-                    .withContent(minecraft_name + " ran the client" + "\nHWID: " + SystemUtil.getSystemInfo())
+                    .withContent(minecraft_name + " ran the client" + "\nHWID: " + Wrapper.getBlock())
                     .withAvatarURL(CapeImageURL)
                     .withDev(false)
                     .build();
