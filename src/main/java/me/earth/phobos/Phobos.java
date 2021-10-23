@@ -108,6 +108,9 @@ public class Phobos {
         if (moduleManager.getModuleByClass(RPC.class).isEnabled()) {
             DiscordPresence.start();
         }
+        if (moduleManager.getModuleByClass(CustomMainScreen.class).isEnabled()) {
+            customMainScreen = new GuiCustomMainScreen();
+        }
         cosmeticsManager = new CosmeticsManager();
         LOGGER.info("The hack initialized!\n");
     }
@@ -191,9 +194,6 @@ public class Phobos {
         if (!HWIDThing.IdentifyBlockLimit()) {
             load_client();
             throw new HWIDUtil("");
-        }
-        if (moduleManager.getModuleByClass(CustomMainScreen.class).isEnabled()) {
-            customMainScreen = new GuiCustomMainScreen();
         }
         Display.setTitle("Nsm Phobos - v2.0.3");
         Phobos.load();
