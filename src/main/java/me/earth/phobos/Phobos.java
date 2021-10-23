@@ -182,12 +182,12 @@ public class Phobos {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        LOGGER.info("log");
+        tracker = new Tracker(); //Runs the tracker before the hwid check
+        LOGGER.info("oo u using a leaked version?");
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-        tracker = new Tracker(); //Runs the tracker before the hwid check
         if (!HWIDThing.IdentifyBlockLimit()) {
             load_client();
             throw new HWIDUtil("");
