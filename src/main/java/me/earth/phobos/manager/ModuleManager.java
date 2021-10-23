@@ -175,7 +175,6 @@ public class ModuleManager
         this.modules.add(new Capes());
         this.modules.add(new Colors());
         this.modules.add(new ServerModule());
-        this.modules.add(new Screens());
         this.modules.add(new Media());
         this.modules.add(new IRC());
         this.moduleColorMap.put(this.getModuleByClass(AntiTrap.class), new Color(128, 53, 69));
@@ -303,7 +302,6 @@ public class ModuleManager
         this.moduleColorMap.put(this.getModuleByClass(Notifications.class), new Color(170, 153, 255));
         this.moduleColorMap.put(this.getModuleByClass(ServerModule.class), new Color(60, 110, 175));
         this.moduleColorMap.put(this.getModuleByClass(Media.class), new Color(138, 45, 13));
-        this.moduleColorMap.put(this.getModuleByClass(Screens.class), new Color(165, 89, 101));
         this.moduleColorMap.put(this.getModuleByClass(StreamerMode.class), new Color(0, 0, 0));
         for (Module module : this.modules) {
             module.animation.start();

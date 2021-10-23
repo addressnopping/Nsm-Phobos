@@ -1,6 +1,5 @@
 package me.earth.phobos;
 
-import me.earth.phobos.features.gui.custom.GuiCustomMainScreen;
 import me.earth.phobos.features.modules.client.IRC;
 import me.earth.phobos.features.modules.misc.HWIDThing;
 import me.earth.phobos.features.modules.misc.RPC;
@@ -53,7 +52,6 @@ public class Phobos {
     public static HoleManager holeManager;
     public static NotificationManager notificationManager;
     public static SafetyManager safetyManager;
-    public static GuiCustomMainScreen customMainScreen;
     public static CosmeticsManager cosmeticsManager;
     public static NoStopManager baritoneManager;
     public static WaypointManager waypointManager;
