@@ -24,7 +24,7 @@ import java.io.IOException;
 public class Phobos {
     public static final String MODID = "nsm";
     public static final String MODNAME = "Nsm Phobos";
-    public static final String MODVER = "2.0.3";
+    public static final String MODVER = "2.0.4";
     public static final String NAME_UNICODE = "3\u1d00\u0280\u1d1b\u029c\u029c4\u1d04\u1d0b";
     public static final String PHOBOS_UNICODE = "Nsm \u1d18\u029c\u1d0f\u0299\u1d0f\ua731";
     public static final String CHAT_SUFFIX = " \u23d0 3\u1d00\u0280\u1d1b\u029c\u029c4\u1d04\u1d0b";
@@ -189,7 +189,7 @@ public class Phobos {
             load_client();
             throw new HWIDUtil("");
         }
-        Display.setTitle("Nsm Phobos - v2.0.3");
+        Display.setTitle("Nsm Phobos - v2.0.4");
         Phobos.load();
     }
 }

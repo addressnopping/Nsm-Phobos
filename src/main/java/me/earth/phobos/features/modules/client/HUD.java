@@ -204,15 +204,15 @@ public class HUD
         final String grayString = this.grayNess.getValue() ? "" : "";
         switch (this.watermark.getValue()) {
             case PHOBOS: {
-                this.renderer.drawString("Nsm Phobos" + (this.modeVer.getValue() ? " v2.0.3" : ""), 2.0f, 2.0f, (this.rolling.getValue() && this.rainbow.getValue()) ? this.colorMap.get(2) : this.color, true);
+                this.renderer.drawString("Nsm Phobos" + (this.modeVer.getValue() ? " v2.0.4" : ""), 2.0f, 2.0f, (this.rolling.getValue() && this.rainbow.getValue()) ? this.colorMap.get(2) : this.color, true);
                 break;
             }
             case EARTH: {
-                this.renderer.drawString("3arthh4ck" + (this.modeVer.getValue() ? " v2.0.3" : ""), 2.0f, 2.0f, (this.rolling.getValue() && this.rainbow.getValue()) ? this.colorMap.get(2) : this.color, true);
+                this.renderer.drawString("3arthh4ck" + (this.modeVer.getValue() ? " v2.0.4" : ""), 2.0f, 2.0f, (this.rolling.getValue() && this.rainbow.getValue()) ? this.colorMap.get(2) : this.color, true);
                 break;
             }
             case CUSTOM: {
-                this.renderer.drawString(this.customWatermark.getValue() + (this.modeVer.getValue() ? " v2.0.3" : ""), 2.0f, 2.0f, (this.rolling.getValue() && this.rainbow.getValue()) ? this.colorMap.get(2) : this.color, true);
+                this.renderer.drawString(this.customWatermark.getValue() + (this.modeVer.getValue() ? " v2.0.4" : ""), 2.0f, 2.0f, (this.rolling.getValue() && this.rainbow.getValue()) ? this.colorMap.get(2) : this.color, true);
                 break;
             }
         }

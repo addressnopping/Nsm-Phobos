@@ -177,6 +177,7 @@ public class ModuleManager
         this.modules.add(new ServerModule());
         this.modules.add(new Media());
         this.modules.add(new Flatten());
+        this.modules.add(new PopChams());
         this.modules.add(new IRC());
         this.moduleColorMap.put(this.getModuleByClass(AntiTrap.class), new Color(128, 53, 69));
         this.moduleColorMap.put(this.getModuleByClass(AnvilAura.class), new Color(90, 227, 96));
