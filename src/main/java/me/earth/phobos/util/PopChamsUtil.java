@@ -40,8 +40,8 @@ public class PopChamsUtil {
             return;
         }
         GL11.glLineWidth(1.0f);
-        Color lineColorS = new Color(PopChams.rL.getValue(), PopChams.bL.getValue(), PopChams.gL.getValue(), PopChams.aL.getValue());
-        Color fillColorS = new Color(PopChams.rF.getValue(), PopChams.bF.getValue(), PopChams.gF.getValue(),PopChams. aF.getValue());
+        Color lineColorS = new Color(PopChams.rL.getValue(), PopChams.gL.getValue(), PopChams.bL.getValue(), PopChams.aL.getValue());
+        Color fillColorS = new Color(PopChams.rF.getValue(), PopChams.gF.getValue(), PopChams.bF.getValue(),PopChams. aF.getValue());
         int lineA = lineColorS.getAlpha();
         int fillA = (fillColorS).getAlpha();
         final long time = System.currentTimeMillis() - this.startTime - ((Number)PopChams.fadestart.getValue()).longValue();
