@@ -32,7 +32,7 @@ class Flatten extends Module {
 
     public
     Flatten ( ) {
-        super ( "Flatten" , "Flatter then zprestige_s 9 yr gf." , Module.Category.COMBAT , true , false , false );
+        super ( "Flatten" , "rip meta" , Module.Category.COMBAT , true , false , false );
         this.offsetStep = 0;
         this.oldSlot = - 1;
     }
