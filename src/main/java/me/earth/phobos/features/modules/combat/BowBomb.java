@@ -1,5 +1,6 @@
 package me.earth.phobos.features.modules.combat;
 
+import me.earth.phobos.event.events.MoveEvent;
 import me.earth.phobos.event.events.PacketEvent;
 import me.earth.phobos.features.modules.Module;
 import me.earth.phobos.features.setting.Setting;
@@ -10,6 +11,7 @@ import net.minecraft.network.play.client.CPacketPlayer;
 import net.minecraft.network.play.client.CPacketPlayerDigging;
 import net.minecraft.network.play.client.CPacketPlayerTryUseItem;
 import net.minecraft.util.EnumHand;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class BowBomb extends Module {
