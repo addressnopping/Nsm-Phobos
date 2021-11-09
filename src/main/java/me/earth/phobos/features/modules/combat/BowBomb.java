@@ -17,17 +17,21 @@ public class BowBomb extends Module {
     private boolean shooting;
     private long lastShootTime;
 
-    public BowBomb() { super("BowBomb", "onetap.inc", Category.COMBAT, true, false, false); }
+    public BowBomb() { 
+        super("BowBomb", "boom boom", Category.COMBAT, true, false, false); 
+    }
 
     public Setting <Boolean> Bows = this.register ( new Setting <> ( "Bows", true ) );
     public Setting <Boolean> pearls = this.register ( new Setting <> ( "Pearls", true ) );
     public Setting <Boolean> eggs = this.register ( new Setting <> ( "Eggs", true ) );
     public Setting <Boolean> snowballs = this.register ( new Setting <> ( "SnowBallz", true ) );
     public Setting <Integer> Timeout = this.register ( new Setting <> ( "Timeout", 5000, 100, 20000 ) );
-    public Setting <Integer> spoofs = this.register ( new Setting <> ( "Spoofs", 10, 1, 300 ) );
-    public Setting <Boolean> bypass = this.register ( new Setting <> ( "Bypass", false));
-    public Setting <Boolean> debug = this.register ( new Setting <> ( "Debug", false));
+    public Setting <Integer> spoofs = this.register ( new Setting <> ( "Spoofs", 10, 1, 200 ) );
+    public Setting <Boolean> cancelMotion = this.register ( new Setting <> ( "Cancel Motion", false ) );
+    public Setting <Boolean> debug = this.register ( new Setting <> ( "Debug", false ) );
+    public Setting <Boolean> bypass = this.register ( new Setting <> ( "Bypass", false ) );
 
+    private boolean shouldCancelMotion = false;
 
     @Override
     public void onEnable() {
@@ -36,8 +40,8 @@ public class BowBomb extends Module {
             lastShootTime = System.currentTimeMillis();
         }
     }
-
-    @SubscribeEvent
+  
+      @SubscribeEvent
     public void onPacketSend(PacketEvent.Send event) {
         if (event.getStage() != 0) return;
 
@@ -77,22 +81,34 @@ public class BowBomb extends Module {
             shooting = true;
             lastShootTime = System.currentTimeMillis();
 
+            //mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.START_SPRINTING));
+
+            if(cancelMotion.getValue()) {
+                shouldCancelMotion = true;
+            }
+
             mc.player.connection.sendPacket(new CPacketEntityAction(mc.player, CPacketEntityAction.Action.START_SPRINTING));
 
             for (int index = 0; index < spoofs.getValue(); ++index) {
                 if (bypass.getValue()) {
-                    mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY + 1e-10, mc.player.posZ, false));
-                    mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY - 1e-10, mc.player.posZ, true));
+                    mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX + 1e-10, mc.player.posY + 1e-10, mc.player.posZ + 1e-10, false));
+                    mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX - 1e-10, mc.player.posY - 1e-10, mc.player.posZ - 1e-10, true));
                 } else {
-                    mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY - 1e-10, mc.player.posZ, true));
-                    mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY + 1e-10, mc.player.posZ, false));
+                    mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX - 1e-10, mc.player.posY - 1e-10, mc.player.posZ - 1e-10, true));
+                    mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX + 1e-10, mc.player.posY + 1e-10, mc.player.posZ + 1e-10, false));
                 }
 
             }
 
+            shouldCancelMotion = false;
             if (debug.getValue()) Command.sendMessage("Spoofed");
 
             shooting = false;
         }
+    }
+
+    @SubscribeEvent(priority = EventPriority.HIGH)
+    public void onMove(MoveEvent event) {
+        event.setCanceled(shouldCancelMotion);
     }
 }
