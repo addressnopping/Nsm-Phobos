@@ -4,7 +4,7 @@ import me.earth.phobos.Phobos;
 import me.earth.phobos.event.events.PacketEvent;
 import me.earth.phobos.features.command.Command;
 import me.earth.phobos.features.modules.Module;
-import me.earth.phobos.features.modules.client.Management;
+import me.earth.phobos.features.modules.client.Managers;
 import me.earth.phobos.features.setting.Setting;
 import me.earth.phobos.util.TextUtil;
 import me.earth.phobos.util.Timer;
@@ -134,7 +134,7 @@ class ChatModifier
             String timeString = "<" + date + ">" + ( this.space.getValue ( ) ? " " : "" );
             StringBuilder builder = new StringBuilder ( timeString );
             builder.insert ( 0 , "\u00a7+" );
-            if ( ! message.contains ( Management.getInstance ( ).getRainbowCommandMessage ( ) ) ) {
+            if ( ! message.contains ( Managers.getInstance ( ).getRainbowCommandMessage ( ) ) ) {
                 builder.append ( "\u00a7r" );
             }
             return builder.toString ( );
