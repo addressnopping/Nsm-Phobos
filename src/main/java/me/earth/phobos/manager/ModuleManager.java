@@ -31,6 +31,7 @@ public class ModuleManager
 
     public void init() {
         this.modules.add(new Offhand());
+        this.modules.add(new AirJump());
         this.modules.add(new Surround());
         this.modules.add(new AutoTrap());
         this.modules.add(new AutoCrystal());
