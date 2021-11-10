@@ -1057,13 +1057,10 @@ public class AutoCrystal
     }
 
     private void attackEntity(Entity entity) {
-        if (entity != null) {
-            if (this.eventMode.getValue() == 2 && this.threadMode.getValue() == ThreadMode.NONE && this.rotateFirst.getValue().booleanValue() && this.rotate.getValue() != Rotate.OFF) {
-                this.packetUseEntities.add(new CPacketUseEntity(entity));
-            } else {
-                EntityUtil.attackEntity(entity, this.sync.getValue(), this.breakSwing.getValue());
-                brokenPos.add(new BlockPos(entity.getPositionVector()).down());
-            }
+        if (packet) {
+            mc.player.connection.sendPacket(new CPacketUseEntity(entity));
+        } else {
+            mc.playerController.attackEntity(mc.player, entity);
         }
     }
 
