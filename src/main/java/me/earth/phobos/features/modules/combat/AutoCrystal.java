@@ -97,6 +97,7 @@ public class AutoCrystal
     public Setting<Float> popDamage = this.register(new Setting<Object>("PopDamage", Float.valueOf(4.0f), Float.valueOf(0.0f), Float.valueOf(6.0f), v -> this.setting.getValue() == Settings.PLACE && this.place.getValue() != false && this.doublePop.getValue() != false));
     public Setting<Integer> popTime = this.register(new Setting<Object>("PopTime", Integer.valueOf(500), Integer.valueOf(0), Integer.valueOf(1000), v -> this.setting.getValue() == Settings.PLACE && this.place.getValue() != false && this.doublePop.getValue() != false));
     public Setting<Boolean> explode = this.register(new Setting<Object>("Break", Boolean.valueOf(true), v -> this.setting.getValue() == Settings.BREAK));
+    public Setting<Boolean> attackPacket = this.register(new Setting<Boolean>("AttackPacket", Boolean.valueOf(true), v -> this.setting.getValue() == Settings.BREAK));
     public Setting<Switch> switchMode = this.register(new Setting<Object>("Attack", Switch.BREAKSLOT, v -> this.setting.getValue() == Settings.BREAK && this.explode.getValue() != false));
     public Setting<Integer> breakDelay = this.register(new Setting<Object>("BreakDelay", Integer.valueOf(50), Integer.valueOf(0), Integer.valueOf(500), v -> this.setting.getValue() == Settings.BREAK && this.explode.getValue() != false));
     public Setting<Float> breakRange = this.register(new Setting<Object>("BreakRange", Float.valueOf(6.0f), Float.valueOf(0.0f), Float.valueOf(10.0f), v -> this.setting.getValue() == Settings.BREAK && this.explode.getValue() != false));
@@ -1057,7 +1058,7 @@ public class AutoCrystal
     }
 
     private void attackEntity(Entity entity) {
-        if (packet) {
+        if (this.attackPacket.getValue()) {
             mc.player.connection.sendPacket(new CPacketUseEntity(entity));
         } else {
             mc.playerController.attackEntity(mc.player, entity);
