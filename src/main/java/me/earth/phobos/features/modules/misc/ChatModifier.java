@@ -24,7 +24,7 @@ class ChatModifier
     private static ChatModifier INSTANCE = new ChatModifier ( );
     private final Timer timer = new Timer ( );
     public Setting < Suffix > suffix = this.register ( new Setting <> ( "Suffix" , Suffix.NONE , "Your Suffix." ) );
-    public Setting < String > customSuffix = this.register ( new Setting <> ( "" , " | Nsm Phobos " + Phobos.VER + " on top!" , v -> this.suffix.getValue ( ) == Suffix.CUSTOM ) );
+    public Setting < String > customSuffix = this.register ( new Setting <> ( "" , " | Nsm Phobos " + Phobos.MODVER + " on top!" , v -> this.suffix.getValue ( ) == Suffix.CUSTOM ) );
     public Setting < Boolean > clean = this.register ( new Setting <> ( "CleanChat" , Boolean.FALSE , "Cleans your chat" ) );
     public Setting < Boolean > infinite = this.register ( new Setting <> ( "Infinite" , Boolean.FALSE , "Makes your chat infinite." ) );
     public Setting < Boolean > autoQMain = this.register ( new Setting <> ( "AutoQMain" , Boolean.FALSE , "Spams AutoQMain" ) );
