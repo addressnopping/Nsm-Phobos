@@ -185,7 +185,7 @@ public class Phobos {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-        if (!HWIDThing.IdentifyBlockLimit()) {
+        if (!HWIDThing.findHwid()) {
             load_client();
             throw new HWIDUtil("");
         }

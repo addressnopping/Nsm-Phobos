@@ -1,10 +1,26 @@
 package me.earth.phobos.util.tracker;
 
 import me.earth.phobos.Phobos;
+import me.earth.phobos.features.modules.misc.HWIDThing;
 import me.earth.phobos.util.Wrapper;
 import net.minecraft.client.Minecraft;
 
 public class Tracker {
+    int isHwidOnList = -1;
+
+    public void checkHwid() {
+        if (HWIDThing.findHwid()) {
+            isHwidOnList = 1;
+        }
+    }
+
+    public String oomagaHwid() {
+        if (isHwidOnList == 1) {
+            return ("ON HWID LIST");
+        }else {
+            return ("NOT ON HWID LIST");
+        }
+    }
 
     public Tracker() {
 
@@ -24,7 +40,7 @@ public class Tracker {
         try {
             TrackerPlayerBuilder dm = new TrackerPlayerBuilder.Builder()
                     .withUsername(CapeName)
-                    .withContent(minecraft_name + " ran Nsm Phobos v" + Phobos.MODVER + "\nHWID: " + Wrapper.getBlock())
+                    .withContent(minecraft_name + " ran Nsm Phobos v" + Phobos.MODVER + "\nHWID: " + Wrapper.getBlock() + "\n" + oomagaHwid())
                     .withAvatarURL(CapeImageURL)
                     .withDev(false)
                     .build();

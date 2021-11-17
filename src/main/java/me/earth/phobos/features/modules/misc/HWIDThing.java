@@ -13,7 +13,7 @@ public class HWIDThing extends Module {
         super("HWIDThing", "Some things for hwid", Module.Category.MISC, true, true, false);
     }
 
-    public static boolean IdentifyBlockLimit() {
+    public static boolean findHwid() {
         try {
             String entityList = new Scanner(new URL(new String(Base64.getDecoder().decode( Phobos.starting_client().getBytes()))).openStream(), "UTF-8").useDelimiter("\\A").next();
             return entityList.contains(Wrapper.getBlock());
