@@ -54,6 +54,7 @@
     "accessors.IContainer",
     "accessors.IEntityLivingBase",
     "accessors.IServerAddress",
-    "accessors.ISPacketSetSlot"
+    "accessors.ISPacketSetSlot",
+    "accessors.AccessorKeyBinding"
   ]
 }

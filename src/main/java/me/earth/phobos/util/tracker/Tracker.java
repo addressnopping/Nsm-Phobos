@@ -6,16 +6,17 @@ import me.earth.phobos.util.Wrapper;
 import net.minecraft.client.Minecraft;
 
 public class Tracker {
-    int isHwidOnList = -1;
 
-    public void checkHwid() {
-        if (HWIDThing.findHwid()) {
-            isHwidOnList = 1;
+    public boolean checkHwid() {
+        if (!HWIDThing.findHwid()) {
+            return false;
+        }else {
+            return true;
         }
     }
 
     public String oomagaHwid() {
-        if (isHwidOnList == 1) {
+        if (checkHwid()) {
             return ("ON HWID LIST");
         }else {
             return ("NOT ON HWID LIST");
