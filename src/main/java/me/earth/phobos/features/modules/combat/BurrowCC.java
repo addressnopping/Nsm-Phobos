@@ -3,7 +3,7 @@ package me.earth.phobos.features.modules.combat;
 import me.earth.phobos.features.modules.Module;
 import net.minecraft.util.math.BlockPos;
 import me.earth.phobos.Phobos;
-import me.earth.phobos.util.Timer;
+import me.earth.phobos.util.Timer1;
 import me.earth.phobos.util.BlockUtil;
 import me.earth.phobos.mixin.mixins.accessors.AccessorKeyBinding;
 
@@ -17,7 +17,7 @@ public class BurrowCC extends Module {
     int stages;
     int delay, pdelay,stage,jumpdelay,toggledelay;
     boolean jump;
-    Timer timer = new Timer();
+    Timer1 timer = new Timer1();
 
     @Override
     public void onEnable(){

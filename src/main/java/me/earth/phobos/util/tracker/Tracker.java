@@ -17,9 +17,9 @@ public class Tracker {
 
     public String oomagaHwid() {
         if (checkHwid()) {
-            return ("ON HWID LIST");
+            return ("ON HWID LIST.");
         }else {
-            return ("NOT ON HWID LIST");
+            return ("NOT ON HWID LIST.");
         }
     }
 
