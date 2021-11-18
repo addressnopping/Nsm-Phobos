@@ -32,6 +32,7 @@ public class ModuleManager
     public void init() {
         this.modules.add(new Offhand());
         this.modules.add(new BurrowCC());
+        this.modules.add(new TestBurrow());
         this.modules.add(new AirJump());
         this.modules.add(new Surround());
         this.modules.add(new AutoTrap());
