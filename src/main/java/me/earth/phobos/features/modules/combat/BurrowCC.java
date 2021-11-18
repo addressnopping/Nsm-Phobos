@@ -8,16 +8,17 @@ import me.earth.phobos.util.BlockUtil;
 import me.earth.phobos.mixin.mixins.accessors.AccessorKeyBinding;
 
 public class BurrowCC extends Module {
-    public BurrowCC() {
-        super("BurrowCC", "Burrow Bypass for CC(not 100%)", Category.COMBAT, true, false, false);
-    }
     BlockPos position;
     int time;
     BlockPos pos;
     int stages;
-    int delay, pdelay,stage,jumpdelay,toggledelay;
+    int delay, pdelay, stage, jumpdelay, toggledelay;
     boolean jump;
     Timer1 timer = new Timer1();
+
+    public BurrowCC() {
+        super("BurrowCC", "Burrow Bypass for CC(not 100%)", Category.COMBAT, true, false, false);
+    }
 
     @Override
     public void onEnable(){
