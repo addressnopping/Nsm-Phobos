@@ -97,7 +97,6 @@ public class BurrowCC extends Module
 
     public enum Mode
     {
-        PIGBYPASS,
-        SECONDBYPASS
+        PIGBYPASS
     }
 }

@@ -27,7 +27,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: NsmPhobos
-          path: build/libs/*.jar
+          path: build/libs/*-release.jar
 
       - name: Cleanup Gradle Cache
         run: rm -rf ~/.gradle/caches/
