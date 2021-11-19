@@ -11,10 +11,10 @@ import net.minecraft.util.math.BlockPos;
 public class BurrowCC extends Module
 {
     private final Setting <Mode> mode = this.register (new Setting <> ("Bypass Method" , Mode.PIGBYPASS));
-    public Setting<Float> ticks = this.register(new Setting<Float>("Ticks", Float.valueOf(10.0f), Float.valueOf(10.0f), Float.valueOf(60.0f)));
-    public Setting<Float> toggleDelays = this.register(new Setting<Float>("Toggle Delay", Float.valueOf(10.0f), Float.valueOf(10.0f), Float.valueOf(60.0f)));
-    public Setting<Float> oneDelays = this.register(new Setting<Float>("One Delay", Float.valueOf(10.0f), Float.valueOf(10.0f), Float.valueOf(60.0f)));
-    public Setting<Float> placeDelay = this.register(new Setting<Float>("Second Delay", Float.valueOf(10.0f), Float.valueOf(10.0f), Float.valueOf(60.0f)));
+    public Setting<Integer> ticks = this.register(new Setting<Integer>("Ticks", 10, 5, 60));
+    public Setting<Integer> toggleDelays = this.register(new Setting<Integer>("Toggle Delay", 10, 5, 60));
+    public Setting<Integer> oneDelays = this.register(new Setting<Integer>("One Delay", 10, 5, 60));
+    public Setting<Integer> placeDelay = this.register(new Setting<Integer>("Second Delay", 10, 5, 60));
     BlockPos position;
     int delay;
     int pdelay;
@@ -59,7 +59,7 @@ public class BurrowCC extends Module
             if (BurrowCC.mc.player.onGround) {
                 BurrowCC.mc.player.jump();
             }
-            Phobos.TICK_TIMER = this.ticks.getValue();
+            Phobos.TICK_TIMER = (float)ticks.getValue();
             if (this.delay >= this.oneDelays.getValue()) {
                 this.stage = 2;
                 this.delay = 0;
@@ -82,7 +82,7 @@ public class BurrowCC extends Module
         }
         if (this.stage == 3) {
             ++this.toggledelay;
-            Phobos.TICK_TIMER = this.ticks.getValue();
+            Phobos.TICK_TIMER = (float)ticks.getValue();
             if (BurrowCC.mc.player.onGround) {
                 BurrowCC.mc.player.jump();
             }
