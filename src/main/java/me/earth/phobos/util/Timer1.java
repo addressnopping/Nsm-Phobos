@@ -11,10 +11,6 @@ public class Timer1
         return !this.paused && System.currentTimeMillis() - this.startTime >= this.delay;
     }
 
-    public void setDelay(final long l) {
-        this.delay = l;
-    }
-
     public long getTimePassed() {
         return System.currentTimeMillis() - this.time;
     }

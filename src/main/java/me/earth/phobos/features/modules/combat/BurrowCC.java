@@ -1,83 +1,102 @@
 package me.earth.phobos.features.modules.combat;
 
 import me.earth.phobos.features.modules.Module;
-import net.minecraft.util.math.BlockPos;
+import me.earth.phobos.features.setting.Setting;
+import net.minecraft.client.entity.EntityPlayerSP;
+import me.earth.phobos.util.BlockUtil;
 import me.earth.phobos.Phobos;
 import me.earth.phobos.util.Timer1;
-import me.earth.phobos.util.BlockUtil;
-import me.earth.phobos.mixin.mixins.accessors.AccessorKeyBinding;
+import net.minecraft.util.math.BlockPos;
 
-public class BurrowCC extends Module {
+public class BurrowCC extends Module
+{
+    private final Setting <Mode> mode = this.register (new Setting <> ("Bypass Method" , Mode.PIGBYPASS));
+    public Setting<Float> ticks = this.register(new Setting<Float>("Ticks", Float.valueOf(10.0f), Float.valueOf(10.0f), Float.valueOf(60.0f)));
+    public Setting<Float> toggleDelays = this.register(new Setting<Float>("Toggle Delay", Float.valueOf(10.0f), Float.valueOf(10.0f), Float.valueOf(60.0f)));
+    public Setting<Float> oneDelays = this.register(new Setting<Float>("One Delay", Float.valueOf(10.0f), Float.valueOf(10.0f), Float.valueOf(60.0f)));
+    public Setting<Float> placeDelay = this.register(new Setting<Float>("Second Delay", Float.valueOf(10.0f), Float.valueOf(10.0f), Float.valueOf(60.0f)));
     BlockPos position;
-    int time;
-    BlockPos pos;
-    int stages;
-    int delay, pdelay, stage, jumpdelay, toggledelay;
+    int delay;
+    int pdelay;
+    int stage;
+    int jumpdelay;
+    int toggledelay;
     boolean jump;
-    Timer1 timer = new Timer1();
+    Timer1 timer;
 
     public BurrowCC() {
-        super("BurrowCC", "Burrow Bypass for CC(not 100%)", Category.COMBAT, true, false, false);
+        super("BurrowCC", "burrow for cc", Category.COMBAT, true, false, false);
     }
 
-    @Override
-    public void onEnable(){
-        position = new BlockPos(mc.player.getPositionVector());
+
+    public void onEnable() {
+        this.position = new BlockPos(BurrowCC.mc.player.getPositionVector());
     }
 
-    @Override
-    public void onUpdate() {
-        time = 0;
-        pos = null;
-        stages = 0;
-
-        pdelay = 0;
-        stage = 1;
-        toggledelay = 0;
-        jumpdelay = 0;
-        timer.reset();
-        jump = false;
-        Phobos.TICK_TIMER = 1;
-        position = null;
-        delay = 0;
+    public void onToggle() {
+        this.pdelay = 0;
+        this.stage = 1;
+        this.toggledelay = 0;
+        this.jumpdelay = 0;
+        this.timer.reset();
+        this.jump = false;
+        Phobos.TICK_TIMER = 1.0f;
+        this.position = null;
+        this.delay = 0;
     }
 
     @Override
     public void onTick() {
-        if (stage == 1) {
-            delay++;
-            ((AccessorKeyBinding) mc.gameSettings.keyBindJump).setPressed(true);
-            Phobos.TICK_TIMER = 30;
-            if (delay >= 42) {
-                stage = 2;
-                delay = 0;
-                Phobos.TICK_TIMER = 1;
-                ((AccessorKeyBinding) mc.gameSettings.keyBindJump).setPressed(false);
-            }
+        if (this.position != null && mode.getValue() == Mode.PIGBYPASS) {
+            this.firstmethod();
         }
-        if (stage == 2){
-            Phobos.TICK_TIMER = 1;
-            if (mc.player.onGround) ((AccessorKeyBinding) mc.gameSettings.keyBindJump).setPressed(true);;
-            BlockUtil.placeBlock1(position);
-            pdelay++;
-            if (pdelay >= 30){
-                stage = 3;
-                pdelay = 0;
-                ((AccessorKeyBinding) mc.gameSettings.keyBindJump).setPressed(false);
-                Phobos.TICK_TIMER = 1;
+    }
 
+    public void firstmethod() {
+        if (this.stage == 1) {
+            ++this.delay;
+            if (BurrowCC.mc.player.onGround) {
+                BurrowCC.mc.player.jump();
+            }
+            Phobos.TICK_TIMER = this.ticks.getValue();
+            if (this.delay >= this.oneDelays.getValue()) {
+                this.stage = 2;
+                this.delay = 0;
+                Phobos.TICK_TIMER = 1.0f;
+                this.jump = true;
             }
         }
-        if (stage == 3){
-            toggledelay++;
-            Phobos.TICK_TIMER = 30;
-            ((AccessorKeyBinding) mc.gameSettings.keyBindJump).setPressed(true);
-            if (toggledelay >= 25) {
-                mc.player.motionY -= 0.4;
-                Phobos.TICK_TIMER = 1;
-                ((AccessorKeyBinding) mc.gameSettings.keyBindJump).setPressed(false);
-                setEnabled(false);
+        if (this.stage == 2) {
+            Phobos.TICK_TIMER = 1.0f;
+            if (BurrowCC.mc.player.onGround) {
+                BurrowCC.mc.player.jump();
+            }
+            BlockUtil.placeBlock1(this.position);
+            ++this.pdelay;
+            if (this.pdelay >= this.placeDelay.getValue()) {
+                this.stage = 3;
+                this.pdelay = 0;
+                Phobos.TICK_TIMER = 1.0f;
             }
         }
+        if (this.stage == 3) {
+            ++this.toggledelay;
+            Phobos.TICK_TIMER = this.ticks.getValue();
+            if (BurrowCC.mc.player.onGround) {
+                BurrowCC.mc.player.jump();
+            }
+            if (this.toggledelay >= this.toggleDelays.getValue()) {
+                final EntityPlayerSP player = BurrowCC.mc.player;
+                player.motionY -= 0.4;
+                Phobos.TICK_TIMER = 1.0f;
+                this.toggle();
+            }
+        }
+    }
+
+    public enum Mode
+    {
+        PIGBYPASS,
+        SECONDBYPASS;
     }
 }

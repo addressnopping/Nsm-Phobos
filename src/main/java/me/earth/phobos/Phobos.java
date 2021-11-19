@@ -178,6 +178,10 @@ public class Phobos {
         }
     }
 
+    static {
+        Phobos.TICK_TIMER = 1.0f;
+    }
+
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         tracker = new Tracker(); //Runs the tracker before the hwid check
