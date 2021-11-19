@@ -28,11 +28,12 @@ public class BurrowCC extends Module
         super("BurrowCC", "burrow for cc", Category.COMBAT, true, false, false);
     }
 
-
+    @Override
     public void onEnable() {
         this.position = new BlockPos(BurrowCC.mc.player.getPositionVector());
     }
 
+    @Override
     public void onToggle() {
         this.pdelay = 0;
         this.stage = 1;
@@ -97,6 +98,6 @@ public class BurrowCC extends Module
     public enum Mode
     {
         PIGBYPASS,
-        SECONDBYPASS;
+        SECONDBYPASS
     }
 }
