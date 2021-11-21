@@ -27,7 +27,7 @@ public class PacketFly extends Module
     private float rotationPitch;
 
     public PacketFly() {
-        super("PacketFly",  "Uses packets to allow you to fly and move.",  Module.Category.MOVEMENT,  true,  false,  false);
+        super("PacketFly",  "Uses packets to allow you to fly and move.",  Module.Category.MOVEMENT,  true,  true,  false);
         this.type = (Setting<types>)this.register(new Setting("Type", types.DOWN));
         this.mode = (Setting<modes>)this.register(new Setting("Mode", modes.FAST));
         this.factorAmount = (Setting<Integer>)this.register(new Setting("Factor", 1.0f, 0.1f, 10.0f));
