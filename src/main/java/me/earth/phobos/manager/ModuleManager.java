@@ -104,7 +104,7 @@ public class ModuleManager
         this.modules.add(new NoFall());
         this.modules.add(new IceSpeed());
         this.modules.add(new AutoWalk());
-        this.modules.add(new TestPhase());
+        this.modules.add(new PacketFly());
         this.modules.add(new LongJump());
         this.modules.add(new LagBlock());
         this.modules.add(new FastSwim());
@@ -264,7 +264,7 @@ public class ModuleManager
         this.moduleColorMap.put(this.getModuleByClass(LongJump.class), new Color(228, 27, 213));
         this.moduleColorMap.put(this.getModuleByClass(NoFall.class), new Color(61, 204, 78));
         this.moduleColorMap.put(this.getModuleByClass(NoSlowDown.class), new Color(61, 204, 78));
-        this.moduleColorMap.put(this.getModuleByClass(TestPhase.class), new Color(238, 59, 27));
+        this.moduleColorMap.put(this.getModuleByClass(PacketFly.class), new Color(238, 59, 27));
         this.moduleColorMap.put(this.getModuleByClass(Phase.class), new Color(186, 144, 212));
         this.moduleColorMap.put(this.getModuleByClass(SafeWalk.class), new Color(182, 186, 164));
         this.moduleColorMap.put(this.getModuleByClass(Speed.class), new Color(55, 161, 196));
