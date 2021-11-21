@@ -19,16 +19,14 @@ public class BowBomb extends Module {
     private boolean shooting;
     private long lastShootTime;
 
-    public BowBomb() { 
-        super("BowBomb", "boom boom", Category.COMBAT, true, false, false); 
-    }
+    public BowBomb() { super("BowBomb", "Swagger bow module", Category.COMBAT, true, false, false); }
 
     public Setting <Boolean> Bows = this.register ( new Setting <> ( "Bows", true ) );
     public Setting <Boolean> pearls = this.register ( new Setting <> ( "Pearls", true ) );
     public Setting <Boolean> eggs = this.register ( new Setting <> ( "Eggs", true ) );
     public Setting <Boolean> snowballs = this.register ( new Setting <> ( "SnowBallz", true ) );
     public Setting <Integer> Timeout = this.register ( new Setting <> ( "Timeout", 5000, 100, 20000 ) );
-    public Setting <Integer> spoofs = this.register ( new Setting <> ( "Spoofs", 10, 1, 5000 ) );
+    public Setting <Integer> spoofs = this.register ( new Setting <> ( "Spoofs", 10, 1, 1000 ) );
     public Setting <Boolean> cancelMotion = this.register ( new Setting <> ( "Cancel Motion", false ) );
     public Setting <Boolean> debug = this.register ( new Setting <> ( "Debug", false ) );
     public Setting <Boolean> bypass = this.register ( new Setting <> ( "Bypass", false ) );
@@ -42,8 +40,8 @@ public class BowBomb extends Module {
             lastShootTime = System.currentTimeMillis();
         }
     }
-  
-      @SubscribeEvent
+
+    @SubscribeEvent
     public void onPacketSend(PacketEvent.Send event) {
         if (event.getStage() != 0) return;
 
