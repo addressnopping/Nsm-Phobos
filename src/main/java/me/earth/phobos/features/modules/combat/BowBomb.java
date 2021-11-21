@@ -26,7 +26,7 @@ public class BowBomb extends Module {
     public Setting <Boolean> eggs = this.register ( new Setting <> ( "Eggs", true ) );
     public Setting <Boolean> snowballs = this.register ( new Setting <> ( "SnowBallz", true ) );
     public Setting <Integer> Timeout = this.register ( new Setting <> ( "Timeout", 5000, 100, 20000 ) );
-    public Setting <Integer> spoofs = this.register ( new Setting <> ( "Spoofs", 10, 1, 1000 ) );
+    public Setting <Integer> spoofs = this.register ( new Setting <> ( "Spoofs", 10, 1, 1000 ) ); // BOOOOOOOOOOOOOOOOOOOOOOOOOM
     public Setting <Boolean> cancelMotion = this.register ( new Setting <> ( "Cancel Motion", false ) );
     public Setting <Boolean> debug = this.register ( new Setting <> ( "Debug", false ) );
     public Setting <Boolean> bypass = this.register ( new Setting <> ( "Bypass", false ) );
