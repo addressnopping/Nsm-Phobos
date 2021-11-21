@@ -120,53 +120,56 @@ public class PacketFly extends Module
         }
         int currentFactor = 1;
         int clock = 0;
-        while (currentFactor <= (this.mode.getValue().equals(modes.FACTOR) ? this.factorAmount.getValue() : 1)) {
-            if (clock++ > (this.limit.getValue() ? 5 : 1)) {
-                double vSpeed;
-                if (this.isInsideBlock()) {
-                    if (PacketFly.mc.player.movementInput.jump || PacketFly.mc.player.movementInput.sneak) {
-                        vSpeed = 0.016;
+        if (this.mode.getValue() == modes.FACTOR) {
+            while (currentFactor <= this.factorAmount.getValue()) {
+                if (clock++ > (this.limit.getValue() ? 5 : 1)) {
+                    double vSpeed;
+                    if (this.isInsideBlock()) {
+                        if (PacketFly.mc.player.movementInput.jump || PacketFly.mc.player.movementInput.sneak) {
+                            vSpeed = 0.016;
+                        }
+                        else {
+                            vSpeed = 0.032;
+                        }
                     }
-                    else {
+                    else if (PacketFly.mc.player.movementInput.jump) {
+                        vSpeed = 0.0032;
+                    }
+                    else if (PacketFly.mc.player.movementInput.sneak) {
                         vSpeed = 0.032;
                     }
-                }
-                else if (PacketFly.mc.player.movementInput.jump) {
-                    vSpeed = 0.0032;
-                }
-                else if (PacketFly.mc.player.movementInput.sneak) {
-                    vSpeed = 0.032;
-                }
-                else {
-                    vSpeed = 0.062;
-                }
-                final double[] strafing = MathUtil.directionSpeed(vSpeed);
-                final double motionX = strafing[0] * currentFactor;
-                final double motionZ = strafing[1] * currentFactor;
-                event.setX(motionX);
-                event.setY(motionY);
-                event.setZ(motionZ);
-                this.doMovement(motionX,  motionY,  motionZ);
-                ++currentFactor;
-                if (motionX == 0.0 && motionY == 0.0 && motionZ == 0.0) {
-                    return;
-                }
-                if (this.frequencyUp) {
-                    ++this.frequency;
-                    if (this.frequency != 3) {
-                        continue;
+                    else {
+                        vSpeed = 0.062;
                     }
-                    this.frequencyUp = false;
-                }
-                else {
-                    --this.frequency;
-                    if (this.frequency != 1) {
-                        continue;
+                    final double[] strafing = MathUtil.directionSpeed(vSpeed);
+                    final double motionX = strafing[0] * currentFactor;
+                    final double motionZ = strafing[1] * currentFactor;
+                    event.setX(motionX);
+                    event.setY(motionY);
+                    event.setZ(motionZ);
+                    this.doMovement(motionX,  motionY,  motionZ);
+                    ++currentFactor;
+                    if (motionX == 0.0 && motionY == 0.0 && motionZ == 0.0) {
+                        return;
                     }
-                    this.frequencyUp = true;
+                    if (this.frequencyUp) {
+                        ++this.frequency;
+                        if (this.frequency != 3) {
+                            continue;
+                        }
+                        this.frequencyUp = false;
+                    }
+                    else {
+                        --this.frequency;
+                        if (this.frequency != 1) {
+                            continue;
+                        }
+                        this.frequencyUp = true;
+                    }
                 }
             }
         }
+
     }
 
     @SubscribeEvent
