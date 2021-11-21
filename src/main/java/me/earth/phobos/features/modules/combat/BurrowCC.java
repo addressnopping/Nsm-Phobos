@@ -11,7 +11,7 @@ import net.minecraft.util.math.BlockPos;
 
 public class BurrowCC extends Module
 {
-    Minecraft mc = Minecraft.getMinecraft();
+    static Minecraft mc = Minecraft.getMinecraft();
 
     private final Setting<Mode> mode = this.register(new Setting<Mode>("Bypass Mode", Mode.PIGBYPASS));
     private final Setting<Integer> ticks = this.register(new Setting<Integer>("Ticks", 10, 10, 60));
@@ -30,11 +30,11 @@ public class BurrowCC extends Module
 
     public BurrowCC() {
         super("CCBurrow", "burrow bypass for cc", Category.COMBAT, true, false, false);
-        this.mode = Mode.PIGBYPASS;
-        this.ticks = 50;
-        this.toggleDelays = 20;
-        this.oneDelays = 42;
-        this.placeDelay = 30;
+        this.mode.setValue(Mode.PIGBYPASS);
+        this.ticks.setValue(50);
+        this.toggleDelays.setValue(20);
+        this.oneDelays.setValue(42);
+        this.placeDelay.setValue(30);
         this.timer = new Timer1();
     }
 
@@ -57,7 +57,7 @@ public class BurrowCC extends Module
 
     @Override
     public void onTick() {
-        if (this.position != null && this.mode == Mode.PIGBYPASS) {
+        if (this.position != null && this.mode.getValue() == Mode.PIGBYPASS) {
             this.firstmethod();
         }
     }
@@ -68,8 +68,8 @@ public class BurrowCC extends Module
             if (BurrowCC.mc.player.onGround) {
                 BurrowCC.mc.player.jump();
             }
-            Phobos.TICK_TIMER = (float)this.ticks;
-            if (this.delay >= this.oneDelays) {
+            Phobos.TICK_TIMER = (float)this.ticks.getValue();
+            if (this.delay >= this.oneDelays.getValue()) {
                 this.stage = 2;
                 this.delay = 0;
                 Phobos.TICK_TIMER = 1.0f;
@@ -107,6 +107,6 @@ public class BurrowCC extends Module
     public enum Mode
     {
         PIGBYPASS,
-        SECONDBYPASS;
+        SECONDBYPASS
     }
 }
