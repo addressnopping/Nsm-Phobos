@@ -17,7 +17,7 @@ import net.minecraft.util.math.BlockPos;
 
 public class TestBurrow extends Module {
     public TestBurrow() {
-        super("TestBurrow", "custom", Category.COMBAT, true, false, false);
+        super("TestBurrow", "custom", Category.COMBAT, true, true, false);
     }
 
     private BlockPos originalPos;

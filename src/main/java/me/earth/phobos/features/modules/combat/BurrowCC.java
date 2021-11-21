@@ -29,7 +29,7 @@ public class BurrowCC extends Module
     Timer1 timer;
 
     public BurrowCC() {
-        super("CCBurrow", "burrow bypass for cc", Category.COMBAT, true, false, false);
+        super("CCBurrow", "burrow bypass for cc", Category.COMBAT, true, true, false);
         this.mode.setValue(Mode.PIGBYPASS);
         this.ticks.setValue(50);
         this.toggleDelays.setValue(20);
