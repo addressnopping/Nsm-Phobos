@@ -62,13 +62,15 @@ public class TestBurrow extends Module {
             for (int thing = 0; thing < this.attempts.getValue(); ++thing) {
                 if (!isBurrowed(player)) {
                     try { Thread.sleep(1000); } catch (InterruptedException ex) {
-                        mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY - 0.4, mc.player.posZ, false));
+                        mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY -= 0.4, mc.player.posZ, false));
                     }
                 }
             }
         }
 
         BurrowUtil.switchToSlot(oldSlot);
+
+        this.toggle();
     }
 
     private
