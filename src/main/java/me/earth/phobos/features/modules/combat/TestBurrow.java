@@ -37,7 +37,6 @@ public class TestBurrow extends Module {
         oldSlot = mc.player.inventory.currentItem;
         player = BurrowCC.mc.player;
 
-
         if (this.jumpMode.getValue() == JumpMode.JUMP) {
             BurrowUtil.switchToSlot(BurrowUtil.findHotbarBlock(BlockObsidian.class));
             mc.player.jump();
@@ -70,7 +69,6 @@ public class TestBurrow extends Module {
                 }
             }
         }
-
         BurrowUtil.switchToSlot(oldSlot);
 
         this.toggle();
