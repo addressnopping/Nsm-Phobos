@@ -17,13 +17,25 @@ import net.minecraft.util.math.BlockPos;
  */
 
 public class TestBurrow extends Module {
+    private static TestBurrow INSTANCE = new TestBurrow();
+
     public Setting<JumpMode> jumpMode = this.register(new Setting <> ("Jump Mode", JumpMode.JUMP));
     public Setting<BurrowMode> burrowMode = this.register(new Setting <> ("Burrow Mode", BurrowMode.CPACKET));
-    public Setting<Double> intensity = this.register(new Setting <> ("Intensity", 0.4, 0.4, 0.8));
     public Setting<Integer> attempts = this.register(new Setting <> ("Attempts", 1, 1, 10));
 
     public TestBurrow() {
         super("TestBurrow", "custom", Category.COMBAT, true, false, false);
+    }
+
+    public static TestBurrow getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new TestBurrow();
+        }
+        return INSTANCE;
+    }
+
+    private void setInstance() {
+        INSTANCE = this;
     }
 
     private BlockPos originalPos;
@@ -64,11 +76,11 @@ public class TestBurrow extends Module {
                     if (this.burrowMode.getValue() == BurrowMode.CPACKET) {
                         try { Thread.sleep(100); } catch (InterruptedException ex) {
                             if (this.burrowMode.getValue() == BurrowMode.CPACKET) {
-                                mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY -= this.intensity.getValue(), mc.player.posZ, false));
+                                mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY -= 0.4, mc.player.posZ, false));
                             }
                         }
                     } else if (this.burrowMode.getValue() == BurrowMode.POSY) {
-                        player.posY -= this.intensity.getValue();
+                        player.posY -= 0.4;
                     }
                 }
             }
