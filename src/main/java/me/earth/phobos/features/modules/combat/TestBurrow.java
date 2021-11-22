@@ -82,7 +82,7 @@ public class TestBurrow extends Module {
 
     public enum JumpMode {
         JUMP,
-        FAKEJUMP
+        FAKEJUMP // prob patched but still
     }
     public enum BurrowMode {
         CPACKET,
