@@ -17,7 +17,7 @@ import net.minecraft.util.math.BlockPos;
  */
 
 public class TestBurrow extends Module {
-    public Setting<JumpMode> jumpMode = this.register(new Setting <JumpMode> ("Jump Mode", JumpMode.JUMP));
+    public Setting<JumpMode> jumpMode = this.register(new Setting <> ("Jump Mode", JumpMode.JUMP));
     public Setting<BurrowMode> burrowMode = this.register(new Setting <> ("Burrow Mode", BurrowMode.CPACKET));
     public Setting<Integer> attempts = this.register ( new Setting <> ( "Attempts", 1, 1, 10 ) );
 
