@@ -28,6 +28,7 @@ public class TestBurrow extends Module {
     private BlockPos originalPos;
     int oldSlot;
     EntityPlayerSP player;
+    private int stage;
 
     @Override
     public void onEnable() {
@@ -56,15 +57,18 @@ public class TestBurrow extends Module {
     }
 
     public void doBurrow() {
+        mc.player.jump();
         if (!isBurrowed(player)) {
             for (int thing = 0; thing < this.attempts.getValue(); ++thing) {
                 if (!isBurrowed(player)) {
-                    try { Thread.sleep(100); } catch (InterruptedException ex) {
-                        if (this.burrowMode.getValue() == BurrowMode.CPACKET) {
-                            mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY -= 0.4, mc.player.posZ, false));
-                        } else if (this.burrowMode.getValue() == BurrowMode.POSY) {
-                            player.posY -= 0.4;
+                    if (this.burrowMode.getValue() == BurrowMode.CPACKET) {
+                        try { Thread.sleep(100); } catch (InterruptedException ex) {
+                            if (this.burrowMode.getValue() == BurrowMode.CPACKET) {
+                                mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY -= 0.4, mc.player.posZ, false));
+                            }
                         }
+                    } else if (this.burrowMode.getValue() == BurrowMode.POSY) {
+                        player.posY -= 0.4;
                     }
                 }
             }
