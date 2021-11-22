@@ -17,8 +17,9 @@ import net.minecraft.util.math.BlockPos;
  */
 
 public class TestBurrow extends Module {
-    public Setting<Mode> mode = this.register(new Setting <Mode> ("Mode", Mode.JUMP));
-    public Setting<Integer> attempts = this.register ( new Setting <> ( "Attempts", 1, 5, 10 ) );
+    public Setting<JumpMode> jumpMode = this.register(new Setting <JumpMode> ("Jump Mode", JumpMode.JUMP));
+    public Setting<BurrowMode> burrowMode = this.register(new Setting <> ("Burrow Mode", BurrowMode.CPACKET));
+    public Setting<Integer> attempts = this.register ( new Setting <> ( "Attempts", 1, 1, 10 ) );
 
     public TestBurrow() {
         super("TestBurrow", "custom", Category.COMBAT, true, false, false);
@@ -37,32 +38,34 @@ public class TestBurrow extends Module {
         player = BurrowCC.mc.player;
 
 
-        if (this.mode.getValue() == Mode.JUMP) {
+        if (this.jumpMode.getValue() == JumpMode.JUMP) {
+            BurrowUtil.switchToSlot(BurrowUtil.findHotbarBlock(BlockObsidian.class));
             mc.player.jump();
+            BurrowUtil.placeBlock(originalPos, EnumHand.MAIN_HAND, false, true, false);
 
             this.doBurrow();
-        } else if (this.mode.getValue() == Mode.FAKEJUMP) {
+        } else if (this.jumpMode.getValue() == JumpMode.FAKEJUMP) {
+            BurrowUtil.switchToSlot(BurrowUtil.findHotbarBlock(BlockObsidian.class));
             mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY + 0.41999998688698D, mc.player.posZ, true));
             mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY + 0.7531999805211997D, mc.player.posZ, true));
             mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY + 1.00133597911214D, mc.player.posZ, true));
             mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY + 1.16610926093821D, mc.player.posZ, true));
+            BurrowUtil.placeBlock(originalPos, EnumHand.MAIN_HAND, false, true, false);
 
             this.doBurrow();
         }
-
-
-
     }
 
     public void doBurrow() {
-        BurrowUtil.switchToSlot(BurrowUtil.findHotbarBlock(BlockObsidian.class));
-        BurrowUtil.placeBlock(originalPos, EnumHand.MAIN_HAND, false, true, false);
-
         if (!isBurrowed(player)) {
             for (int thing = 0; thing < this.attempts.getValue(); ++thing) {
                 if (!isBurrowed(player)) {
-                    try { Thread.sleep(1000); } catch (InterruptedException ex) {
-                        mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY -= 0.4, mc.player.posZ, false));
+                    try { Thread.sleep(100); } catch (InterruptedException ex) {
+                        if (this.burrowMode.getValue() == BurrowMode.CPACKET) {
+                            mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY -= 0.4, mc.player.posZ, false));
+                        } else if (this.burrowMode.getValue() == BurrowMode.POSY) {
+                            player.posY -= 0.4;
+                        }
                     }
                 }
             }
@@ -79,8 +82,12 @@ public class TestBurrow extends Module {
         return BurrowESP.mc.world.getBlockState ( blockPos ).getBlock ( ) == Blocks.ENDER_CHEST || BurrowESP.mc.world.getBlockState ( blockPos ).getBlock ( ) == Blocks.OBSIDIAN || BurrowESP.mc.world.getBlockState ( blockPos ).getBlock ( ) == Blocks.CHEST || BurrowESP.mc.world.getBlockState ( blockPos ).getBlock ( ) == Blocks.ANVIL;
     }
 
-    public enum Mode {
+    public enum JumpMode {
         JUMP,
         FAKEJUMP
+    }
+    public enum BurrowMode {
+        CPACKET,
+        POSY
     }
 }
