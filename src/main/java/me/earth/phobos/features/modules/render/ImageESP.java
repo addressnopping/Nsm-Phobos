@@ -142,7 +142,7 @@ public class ImageESP extends Module {
     {
         NSM("/images/nsm.png"),
         FITBEARD("/images/fit.png"),
-        BRINQUEDO("/images/brinquedo.png");
+        BRINQUEDO("/images/brinquedo.png"); // the best
 
         String name;
 
