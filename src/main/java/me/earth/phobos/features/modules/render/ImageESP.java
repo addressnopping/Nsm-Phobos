@@ -40,7 +40,7 @@ public class ImageESP extends Module {
     private ResourceLocation waifu;
 
     public ImageESP() {
-        super("ImageESP", "hhaha", Category.RENDER, true, false, false);
+        super("ImageESP", "hhaha", Category.RENDER, true, true, false);
         onLoad();
     }
 
@@ -138,7 +138,7 @@ public class ImageESP extends Module {
             else {
                 dynamicTexture = new DynamicTexture(image);
                 dynamicTexture.loadTexture(mc.getResourceManager());
-                this.waifu = mc.getTextureManager().getDynamicTextureLocation("XULU_" + imageUrl.getValue().name(), dynamicTexture);
+                this.waifu = mc.getTextureManager().getDynamicTextureLocation("NSMPHOBOS_" + imageUrl.getValue(), dynamicTexture);
             }
         }
         catch (Exception e) {
