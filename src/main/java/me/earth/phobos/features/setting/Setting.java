@@ -3,12 +3,7 @@ package me.earth.phobos.features.setting;
 import me.earth.phobos.event.events.ClientEvent;
 import me.earth.phobos.features.Feature;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.eventhandler.Event;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class Setting<T> {
@@ -24,34 +19,12 @@ public class Setting<T> {
     private String description;
     private Feature feature;
 
-    private Mode mode;
-    private ArrayList<T> options;
-    private Consumer<OnChangedValue<T>> changeTask;
-    private Predicate<T> visibleCheck;
-    private Predicate<T> filter;
-    private String filterError;
-
-
     public Setting(String name, T defaultValue) {
         this.name = name;
         this.defaultValue = defaultValue;
         this.value = defaultValue;
         this.plannedValue = defaultValue;
         this.description = "";
-    }
-
-    public Setting(final String name, final T value, final T[] options) {
-        this.changeTask = null;
-        this.visibleCheck = null;
-        this.filter = null;
-        this.filterError = null;
-        this.name = name;
-        this.value = value;
-        this.options = new ArrayList<T>((Collection<? extends T>) Arrays.asList(options));
-        this.mode = Mode.MODE;
-        if (value instanceof Enum) {
-            this.mode = Mode.ENUM;
-        }
     }
 
     public Setting(String name, T defaultValue, String description) {
@@ -273,10 +246,6 @@ public class Setting<T> {
         this.visibility = visibility;
     }
 
-    public Setting<T> onChanged(final Consumer<OnChangedValue<T>> run) {
-        this.changeTask = run;
-        return this;
-    }
 
     public Setting<T> setRenderName(boolean renderName) {
         this.shouldRenderStringName = renderName;
@@ -295,16 +264,5 @@ public class Setting<T> {
             return true;
         }
         return this.visibility.test(this.getValue());
-    }
-
-    enum Mode
-    {
-        UNKNOWN,
-        MODE,
-        ENUM,
-        TOGGLE,
-        NUMBER,
-        BIND,
-        TEXT;
     }
 }
