@@ -17,10 +17,10 @@ public abstract class Shader {
         int fragmentShaderID;
         int vertexShaderID;
         try {
-            InputStream vertexStream = this.getClass().getResourceAsStream("/assets/europa/shader/vertex.vert");
+            InputStream vertexStream = this.getClass().getResourceAsStream("/assets/minecraft/textures/shader/vertex.vert");
             vertexShaderID = this.createShader(IOUtils.toString((InputStream)vertexStream, (Charset)Charset.defaultCharset()), 35633);
             IOUtils.closeQuietly((InputStream)vertexStream);
-            InputStream fragmentStream = this.getClass().getResourceAsStream("/assets/europa/shader/" + fragmentShader);
+            InputStream fragmentStream = this.getClass().getResourceAsStream("/assets/minecraft/textures/shader/" + fragmentShader);
             fragmentShaderID = this.createShader(IOUtils.toString((InputStream)fragmentStream, (Charset)Charset.defaultCharset()), 35632);
             IOUtils.closeQuietly((InputStream)fragmentStream);
         }
