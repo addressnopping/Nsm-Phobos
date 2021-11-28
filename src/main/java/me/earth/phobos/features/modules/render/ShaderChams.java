@@ -2,7 +2,6 @@ package me.earth.phobos.features.modules.render;
 
 import me.earth.phobos.event.events.Render3DEvent;
 import me.earth.phobos.features.modules.Module;
-import me.earth.phobos.features.modules.combat.TestBurrow;
 import me.earth.phobos.features.setting.Setting;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import me.earth.phobos.event.events.europa.EventRenderEntityLayer;
@@ -23,7 +22,7 @@ public class ShaderChams extends Module
 {
     public static boolean renderNameTags;
 
-    public Setting<modes> mode = this.register(new Setting <> ("Mode", modes.Smoke));
+    public Setting<modes> mode = this.register(new Setting <> ("Mode", modes.SMOKE));
 
     public ShaderChams() {
         super("ShaderChams", "this is cool", Category.RENDER, true, false, false);
@@ -35,24 +34,24 @@ public class ShaderChams extends Module
             return;
         }
         FramebufferShader framebufferShader = null;
-        switch ((modes)this.mode.getValue()) {
-            case Smoke: {
+        switch (this.mode.getValue()) {
+            case SMOKE: {
                 framebufferShader = SmokeShader.SMOKE_SHADER;
                 break;
             }
-            case Aqua: {
+            case AQUA: {
                 framebufferShader = AquaShader.AQUA_SHADER;
                 break;
             }
-            case Flow: {
+            case FLOW: {
                 framebufferShader = FlowShader.FLOW_SHADER;
                 break;
             }
-            case Red: {
+            case RED: {
                 framebufferShader = RedShader.RED_SHADER;
                 break;
             }
-            case Outline: {
+            case OUTLINE: {
                 framebufferShader = GlowShader.GLOW_SHADER;
                 break;
             }
@@ -112,10 +111,10 @@ public class ShaderChams extends Module
 
     public enum modes
     {
-        Smoke,
-        Aqua,
-        Flow,
-        Red,
-        Outline
+        SMOKE,
+        AQUA,
+        FLOW,
+        RED,
+        OUTLINE
     }
 }

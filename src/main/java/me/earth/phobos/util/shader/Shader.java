@@ -18,11 +18,11 @@ public abstract class Shader {
         int vertexShaderID;
         try {
             InputStream vertexStream = this.getClass().getResourceAsStream("/assets/minecraft/textures/shader/vertex.vert");
-            vertexShaderID = this.createShader(IOUtils.toString((InputStream)vertexStream, (Charset)Charset.defaultCharset()), 35633);
-            IOUtils.closeQuietly((InputStream)vertexStream);
+            vertexShaderID = this.createShader(IOUtils.toString(vertexStream, Charset.defaultCharset()), 35633);
+            IOUtils.closeQuietly(vertexStream);
             InputStream fragmentStream = this.getClass().getResourceAsStream("/assets/minecraft/textures/shader/" + fragmentShader);
-            fragmentShaderID = this.createShader(IOUtils.toString((InputStream)fragmentStream, (Charset)Charset.defaultCharset()), 35632);
-            IOUtils.closeQuietly((InputStream)fragmentStream);
+            fragmentShaderID = this.createShader(IOUtils.toString(fragmentStream, Charset.defaultCharset()), 35632);
+            IOUtils.closeQuietly(fragmentStream);
         }
         catch (Exception e) {
             e.printStackTrace();

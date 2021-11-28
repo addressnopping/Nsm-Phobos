@@ -40,7 +40,7 @@ public class ImageESP extends Module {
     private ResourceLocation waifu;
 
     public ImageESP() {
-        super("ImageESP", "hhaha", Category.RENDER, true, true, false);
+        super("ImageESP", "hhaha", Category.RENDER, true, false, false);
         onLoad();
     }
 
@@ -48,6 +48,12 @@ public class ImageESP extends Module {
     @Override
     public void onEnable() {
         EVENT_BUS.register(this);
+    }
+
+    @Override
+    public void onUpdate() {
+        Phobos.configManager.saveCurrentConfig();
+        Phobos.configManager.loadCurrentConfig();
     }
 
     @Override
