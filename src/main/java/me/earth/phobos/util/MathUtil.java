@@ -307,5 +307,12 @@ public class MathUtil
         double posZ = (double) forward * speed * sin - (double) side * speed * cos;
         return new double[]{posX, posZ};
     }
+
+    public static Vec3d interpolateEntity(final Entity entity, final float time) {
+        return new Vec3d(entity.lastTickPosX + (entity.posX - entity.lastTickPosX) * time, entity.lastTickPosY + (entity.posY - entity.lastTickPosY) * time, entity.lastTickPosZ + (entity.posZ - entity.lastTickPosZ) * time);
+    }
+    public static Vec3d getInterpolatedRenderPos(final Entity entity, final float ticks) {
+        return interpolateEntity(entity, ticks).subtract(Minecraft.getMinecraft().getRenderManager().viewerPosX, Minecraft.getMinecraft().getRenderManager().viewerPosY, Minecraft.getMinecraft().getRenderManager().viewerPosZ);
+    }
 }
 
