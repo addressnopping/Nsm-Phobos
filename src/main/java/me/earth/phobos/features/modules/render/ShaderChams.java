@@ -25,7 +25,7 @@ public class ShaderChams extends Module
     public Setting<modes> mode = this.register(new Setting <> ("Mode", modes.SMOKE));
 
     public ShaderChams() {
-        super("ShaderChams", "this is cool", Category.RENDER, true, false, false);
+        super("ShaderChams", "this is cool", Category.RENDER, true, true, false);
     }
 
     @Override
