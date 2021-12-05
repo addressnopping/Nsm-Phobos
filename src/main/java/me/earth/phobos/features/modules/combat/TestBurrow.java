@@ -70,14 +70,12 @@ public class TestBurrow extends Module {
 
     public void doBurrow() {
         mc.player.jump();
-        if (!isBurrowed(player)) {
+        while (!isBurrowed(player)) {
             for (int thing = 0; thing < this.attempts.getValue(); ++thing) {
                 if (!isBurrowed(player)) {
                     if (this.burrowMode.getValue() == BurrowMode.CPACKET) {
-                        try { Thread.sleep(100); } catch (InterruptedException ex) {
-                            if (this.burrowMode.getValue() == BurrowMode.CPACKET) {
-                                mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY -= 0.4, mc.player.posZ, false));
-                            }
+                        if (this.burrowMode.getValue() == BurrowMode.CPACKET) {
+                            mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY -= 0.4, mc.player.posZ, false));
                         }
                     } else if (this.burrowMode.getValue() == BurrowMode.POSY) {
                         player.posY -= 0.4;
