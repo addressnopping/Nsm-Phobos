@@ -43,7 +43,7 @@ extends EntityLivingBase {
 
     @Inject(method={"isEntityInsideOpaqueBlock"}, at={@At(value="HEAD")}, cancellable=true)
     private void isEntityInsideOpaqueBlockHook(CallbackInfoReturnable<Boolean> info) {
-        if (Phase.getInstance().isOn() && Phase.getInstance().type.getValue() != Phase.PacketFlyMode.NONE || TestBurrow.getInstance().isOn()) {
+        if (Phase.getInstance().isOn() && Phase.getInstance().type.getValue() != Phase.PacketFlyMode.NONE) {
             info.setReturnValue(false);
         }
     }
