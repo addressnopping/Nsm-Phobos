@@ -1,5 +1,6 @@
 package me.earth.phobos.features.modules.combat;
 
+import me.earth.phobos.event.events.MoveEvent;
 import me.earth.phobos.features.modules.Module;
 import me.earth.phobos.features.modules.render.BurrowESP;
 import me.earth.phobos.features.setting.Setting;
