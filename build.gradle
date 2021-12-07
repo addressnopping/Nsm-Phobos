@@ -58,7 +58,7 @@ dependencies {
     }
     
     compile 'club.minnced:java-discord-rpc:2.0.2'
-    //compile 'com.googlecode.json-simple:json-simple:1.1.1'
+    //compile 'com.googlecode.json-simple:json-simple:1.1.1' work github pls
     
 }
 
