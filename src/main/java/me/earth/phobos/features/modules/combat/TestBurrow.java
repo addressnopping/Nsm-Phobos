@@ -75,10 +75,10 @@ public class TestBurrow extends Module {
                 if (!isBurrowed(player)) {
                     if (this.burrowMode.getValue() == BurrowMode.CPACKET) {
                         if (this.burrowMode.getValue() == BurrowMode.CPACKET) {
-                            mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY -= 0.4, mc.player.posZ, false));
+                            mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX, mc.player.posY = 0.48f, mc.player.posZ, false));
                         }
                     } else if (this.burrowMode.getValue() == BurrowMode.POSY) {
-                        player.posY -= 0.4;
+                        player.posY = 0.48f;
                     }
                 }
             }
