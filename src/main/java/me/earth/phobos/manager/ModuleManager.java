@@ -46,6 +46,7 @@ public class ModuleManager
         this.modules.add(new BowSpam());
         this.modules.add(new Killaura());
         this.modules.add(new HoleFiller());
+        this.modules.add(new SilentXP());
         this.modules.add(new Selftrap());
         this.modules.add(new Webaura());
         this.modules.add(new AutoArmor());
