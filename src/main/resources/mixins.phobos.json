@@ -55,6 +55,7 @@
     "accessors.IEntityLivingBase",
     "accessors.IServerAddress",
     "accessors.ISPacketSetSlot",
+    "accessors.ISPacketPlayerPosLook",
     "accessors.AccessorKeyBinding"
   ]
 }

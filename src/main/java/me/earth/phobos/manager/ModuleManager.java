@@ -97,7 +97,6 @@ public class ModuleManager
         this.modules.add(new StepOld());
         this.modules.add(new Sprint());
         this.modules.add(new AntiLevitate());
-        this.modules.add(new Phase());
         this.modules.add(new Static());
         this.modules.add(new TPSpeed());
         this.modules.add(new Flight());

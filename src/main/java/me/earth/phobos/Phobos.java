@@ -153,7 +153,7 @@ public class Phobos {
     }
 
     public static String starting_client() {
-        return "aHR0cHM6Ly9wYXN0ZWJpbi5jb20vcmF3L2Y3WnFkNEZD";
+        return "aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL1BldGVyUGVQZW0vTnNtUGhvYm9zLWh3aWRzL21haW4vaHdpZHMudHh0";
     }
 
     public static void copyToClipboard() {
