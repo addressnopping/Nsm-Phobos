@@ -27,7 +27,6 @@ public class Phobos {
     public static final String PHOBOS_SUFFIX = " \u23d0 \u2115\ud835\udd64\ud835\udd5e \u2119\ud835\udd59\ud835\udd60\ud835\udd53\ud835\udd60\ud835\udd64";
     public static final Logger LOGGER = LogManager.getLogger("Nsm");
     public static float TICK_TIMER;
-    public static Tracker tracker;
     public static ModuleManager moduleManager;
     public static SpeedManager speedManager;
     public static PositionManager positionManager;
