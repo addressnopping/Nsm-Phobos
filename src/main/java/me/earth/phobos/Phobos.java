@@ -1,12 +1,8 @@
 package me.earth.phobos;
 
 import me.earth.phobos.features.modules.client.IRC;
-import me.earth.phobos.features.modules.misc.HWIDThing;
 import me.earth.phobos.features.modules.misc.RPC;
 import me.earth.phobos.manager.*;
-import me.earth.phobos.util.HWIDUtil;
-import me.earth.phobos.util.Wrapper;
-import me.earth.phobos.util.tracker.Tracker;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -147,21 +143,6 @@ public class Phobos {
         Phobos.load();
     }
 
-    public static void load_client() {
-        copyToClipboard();
-        JOptionPane.showMessageDialog((Component)null, "HWID: " + Wrapper.getBlock(), "Copied to clipboard!", 0);
-    }
-
-    public static String starting_client() {
-        return "aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL1BldGVyUGVQZW0vTnNtUGhvYm9zLWh3aWRzL21haW4vaHdpZHMudHh0";
-    }
-
-    public static void copyToClipboard() {
-        StringSelection selection = new StringSelection(Wrapper.getBlock());
-        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-        clipboard.setContents(selection, selection);
-    }
-
     public static void onUnload() {
         if (!unloaded) {
             try {
@@ -184,16 +165,11 @@ public class Phobos {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        tracker = new Tracker(); //Runs the tracker before the hwid check
         LOGGER.info("oo u using a leaked version?");
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-        if (!HWIDThing.findHwid()) {
-            load_client();
-            throw new HWIDUtil("");
-        }
         Display.setTitle("Nsm Phobos - v2.0.4");
         Phobos.load();
     }
